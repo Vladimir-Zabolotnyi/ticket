@@ -1,6 +1,7 @@
 package org.hillel.service;
 
 import org.hillel.Journey;
+import org.hillel.persistence.entity.JourneyEntity;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
@@ -13,12 +14,17 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 @Component("JDBCJourneyService")
-@Primary
+//@Primary
 public class JDBCJourneyServiceImpl implements JourneyService {
 
 //    private final String id;
     public JDBCJourneyServiceImpl(){
 //        id = identify;
+    }
+
+    @Override
+    public Long createJourney(JourneyEntity journeyEntity) {
+        return null;
     }
 
     @Override
@@ -33,7 +39,7 @@ public class JDBCJourneyServiceImpl implements JourneyService {
         ResultSet resultSet;
         try (Connection connection = ConnectionFactory.getMySQlConnection()) {
             statement = connection.prepareStatement(
-                    "SELECT * FROM route  WHERE station_from = ? AND" +
+                    "SELECT * FROM journey  WHERE station_from = ? AND" +
                             " station_to = ? AND" +
                             " departure = ? AND " +
                             "arrival = ?");
