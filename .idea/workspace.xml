@@ -5,21 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08f91e42-f6b4-4d4a-86f1-8942106e05f0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/config/DatabaseConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/JourneyEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/JourneyRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalJourneyService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/database.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/Starter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/Starter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/config/RootConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/config/RootConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/JDBCJourneyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/JDBCJourneyServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/JourneyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/JourneyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/TicketClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TicketClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Script" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Script" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/common-beans.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/common-beans.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/config/DatabaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/config/DatabaseConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,6 +113,14 @@
       <workItem from="1616421299057" duration="8405000" />
       <workItem from="1616431630044" duration="11761000" />
     </task>
+    <task id="LOCAL-00001" summary="hw2 &#10;Added minIdle,maxPoolSize in HicariCP&#10;defaultTimeout in TransactionManager">
+      <created>1616759595168</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1616759595168</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,6 +137,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="hw2 &#10;Added minIdle,maxPoolSize in HicariCP&#10;defaultTimeout in TransactionManager" />
+    <option name="LAST_COMMIT_MESSAGE" value="hw2 &#10;Added minIdle,maxPoolSize in HicariCP&#10;defaultTimeout in TransactionManager" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

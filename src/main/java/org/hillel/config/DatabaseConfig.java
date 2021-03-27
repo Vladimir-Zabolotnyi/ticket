@@ -53,6 +53,7 @@ public class DatabaseConfig {
         properties.put("hibernate.dialect", PostgreSQL10Dialect.class.getName());
         properties.put("hibernate.hbm2ddl.auto", "create-drop");
         properties.put("hibernate.show_sql", "true");
+        properties.put("javax.persistence.query.timeout", 3000);
         entityManagerFactory.setJpaProperties(properties);
         return entityManagerFactory;
     }
@@ -62,7 +63,6 @@ public class DatabaseConfig {
         JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
         jpaTransactionManager.setEntityManagerFactory(entityManagerFactory);
         jpaTransactionManager.setDataSource(dataSource());
-        jpaTransactionManager.setDefaultTimeout(300);
         return jpaTransactionManager;
     }
 }
