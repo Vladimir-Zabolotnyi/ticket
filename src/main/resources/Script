@@ -1,9 +1,8 @@
-CREATE TABLE route
+CREATE TABLE journey
 (
-    route_id integer NOT NULL DEFAULT nextval('route_route_id_seq'::regclass),
-    station_from character varying(255) COLLATE pg_catalog."default" NOT NULL,
-    station_to character varying(255) COLLATE pg_catalog."default" NOT NULL,
-    departure timestamp without time zone NOT NULL,
-    arrival timestamp without time zone NOT NULL,
-    CONSTRAINT route_pkey PRIMARY KEY (route_id)
+    journey_id  SERIAL NOT NULL PRIMARY KEY ,
+    station_from VARCHAR(30)  NOT NULL,
+    station_to VARCHAR(30) NOT NULL,
+    departure TIMESTAMP NOT NULL,
+    arrival TIMESTAMP NOT NULL
 )
