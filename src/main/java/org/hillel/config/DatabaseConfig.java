@@ -51,7 +51,7 @@ public class DatabaseConfig {
         entityManagerFactory.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         Properties properties = new Properties();
         properties.put("hibernate.dialect", PostgreSQL10Dialect.class.getName());
-        properties.put("hibernate.hbm2ddl.auto", "create-drop");
+        properties.put("hibernate.hbm2ddl.auto", "validate");
         properties.put("hibernate.show_sql", "true");
         properties.put("javax.persistence.query.timeout", 3000);
         entityManagerFactory.setJpaProperties(properties);

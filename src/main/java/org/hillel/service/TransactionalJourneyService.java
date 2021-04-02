@@ -14,7 +14,7 @@ import java.util.Objects;
 @Service(value = "transactionalJourneyService")
 public class TransactionalJourneyService implements JourneyService  {
     @Autowired
-    JourneyRepository journeyRepository;
+    private JourneyRepository journeyRepository;
 
 
     @Transactional

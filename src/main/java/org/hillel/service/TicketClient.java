@@ -2,6 +2,7 @@ package org.hillel.service;
 
 import org.hillel.Journey;
 import org.hillel.persistence.entity.JourneyEntity;
+import org.hillel.persistence.entity.StopEntity;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,7 +26,11 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
     @Qualifier("transactionalJourneyService")
     private JourneyService transactionalJourneyService;
 
-@Value("${system.message:property not found}")
+    @Autowired
+    private TransactionalStopService transactionalStopService;
+
+
+    @Value("${system.message:journeyService init}")
     private String systemMessage;
 
 
@@ -43,6 +48,9 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
 
     public Long createJourney(final JourneyEntity journeyEntity){
         return transactionalJourneyService.createJourney(journeyEntity);
+    }
+    public Long createStop(final StopEntity stopEntity){
+        return transactionalStopService.createStop(stopEntity);
     }
 
     public Collection<Journey> find(String stationFrom, String stationTo, LocalDateTime departure, LocalDateTime arrival) {

@@ -4,9 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08f91e42-f6b4-4d4a-86f1-8942106e05f0" name="Default Changelist" comment="">
+    <list default="true" id="08f91e42-f6b4-4d4a-86f1-8942106e05f0" name="Default Changelist" comment="lesson 4">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/AbstractModifyEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/CommonInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/StopAdditionalInfoEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/StopEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/VehicleEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/enums/DirectionType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/util/YesNoConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/StopRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalStopService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/Starter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/Starter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/config/DatabaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/config/DatabaseConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/JourneyEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/JourneyEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/TicketClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TicketClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalJourneyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalJourneyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,22 +32,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="spring-beans.schema" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$MAVEN_REPOSITORY$/com/zaxxer/HikariCP/4.0.3/HikariCP-4.0.3.jar!/com/zaxxer/hikari/HikariConfig.class" root0="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2.2\plugins\maven\lib\maven3" />
-      </MavenGeneralSettings>
-    </option>
   </component>
   <component name="ProjectId" id="1q1QeHOZtLBbNNBJHAQ9vyGQHgx" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -69,6 +75,10 @@
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="org.hillel.service" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.hillel.service" />
+      <recent name="org.hillel.persistence.repository" />
     </key>
   </component>
   <component name="RunManager">
@@ -140,7 +150,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="hw2 &#10;Added minIdle,maxPoolSize in HicariCP&#10;defaultTimeout in TransactionManager" />
-    <option name="LAST_COMMIT_MESSAGE" value="hw2 &#10;Added minIdle,maxPoolSize in HicariCP&#10;defaultTimeout in TransactionManager" />
+    <MESSAGE value="lesson 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="lesson 4" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
