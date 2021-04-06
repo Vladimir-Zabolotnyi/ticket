@@ -3,11 +3,9 @@ package org.hillel.service;
 import org.hillel.Journey;
 import org.hillel.persistence.entity.JourneyEntity;
 import org.hillel.persistence.entity.StopEntity;
-import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -18,16 +16,16 @@ import java.util.*;
 @Component
 public class TicketClient  /* implements DisposableBean implements InitializingBean */  {
 
-    @Autowired()
-    @Qualifier("JDBCJourneyService")
-    private JourneyService journeyService;
+//    @Autowired()
+//    @Qualifier("JDBCJourneyService")
+//    private JourneyService journeyService;
 
     @Autowired
     @Qualifier("transactionalJourneyService")
-    private JourneyService transactionalJourneyService;
+    private JourneyService journeyService;
 
     @Autowired
-    private TransactionalStopService transactionalStopService;
+    private TransactionalStopService stopService;
 
 
     @Value("${system.message:journeyService init}")
@@ -47,10 +45,16 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
     }
 
     public Long createJourney(final JourneyEntity journeyEntity){
-        return transactionalJourneyService.createJourney(journeyEntity);
+        return journeyService.createJourney(journeyEntity);
     }
+
+    public  Optional<JourneyEntity> getJourneyById(Long id,boolean withDependecies){
+//        Assert.notNull(id,"id must be set");
+    return  id ==null  ? Optional.empty(): journeyService.getById(id,withDependecies);
+    }
+
     public Long createStop(final StopEntity stopEntity){
-        return transactionalStopService.createStop(stopEntity);
+        return stopService.createStop(stopEntity);
     }
 
     public Collection<Journey> find(String stationFrom, String stationTo, LocalDateTime departure, LocalDateTime arrival) {
@@ -72,5 +76,10 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
     @PreDestroy
     public void destroy() throws Exception {
         System.out.println("bean destroyed");
+    }
+
+    public void saveJourney(JourneyEntity journey) {
+        //todo
+        journeyService.save(journey);
     }
 }

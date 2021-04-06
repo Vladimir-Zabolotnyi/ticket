@@ -1,10 +1,7 @@
 package org.hillel;
 
 import org.hillel.config.RootConfig;
-import org.hillel.persistence.entity.CommonInfo;
-import org.hillel.persistence.entity.JourneyEntity;
-import org.hillel.persistence.entity.StopAdditionalInfoEntity;
-import org.hillel.persistence.entity.StopEntity;
+import org.hillel.persistence.entity.*;
 import org.hillel.persistence.entity.enums.DirectionType;
 import org.hillel.service.TicketClient;
 import org.springframework.context.ApplicationContext;
@@ -13,6 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 import java.time.Instant;
+import java.util.Optional;
 
 public class Starter {
     public static void main(String[] args) throws IOException, IllegalAccessException, InstantiationException, ClassNotFoundException {
@@ -30,6 +28,11 @@ public class Starter {
         journeyEntity.setDirection(DirectionType.TO);
         journeyEntity.setActive(false);
 
+        final VehicleEntity vehicleEntity = new VehicleEntity();
+        vehicleEntity.setName("bus1");
+        journeyEntity.addVehicle(vehicleEntity);
+
+
         StopAdditionalInfoEntity stopAdditionalInfoEntity = new StopAdditionalInfoEntity();
         stopAdditionalInfoEntity.setLatitude(10D);
         stopAdditionalInfoEntity.setLongitude(176D);
@@ -44,8 +47,16 @@ public class Starter {
         stopEntity.setCommonInfo(commonInfo);
 
         stopEntity.setApplyToJourneyBuild(stopEntity.isActive());
+        journeyEntity.addStop(stopEntity);
+        ticketClient.createJourney(journeyEntity);
+//        ticketClient.createStop(stopEntity);
+        final Optional<JourneyEntity> journeyById = ticketClient.getJourneyById(journeyEntity.getId(), true);
+        final JourneyEntity journey = journeyById.get();
+        System.out.println("get all stops by journey " + journey.getStops());
+        System.out.println("create journey with id= " + journeyById);
+        journey.setDirection(DirectionType.FROM);
+        ticketClient.saveJourney(journey);
 
-        ticketClient.createStop(stopEntity);
-        System.out.println("create journey with id= " + ticketClient.createJourney(journeyEntity));
+
     }
 }

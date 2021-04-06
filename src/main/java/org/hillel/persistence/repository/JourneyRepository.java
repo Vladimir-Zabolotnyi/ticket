@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.Objects;
+import java.util.Optional;
 
 @Repository
 public class JourneyRepository {
@@ -16,5 +17,13 @@ public class JourneyRepository {
         if (Objects.isNull(journeyEntity)) throw new IllegalArgumentException("journeyEntity is null");
     entityManager.persist(journeyEntity);
     return journeyEntity.getId();
+    }
+
+    public Optional<JourneyEntity> findById(Long id) {
+       return Optional.ofNullable(entityManager.find(JourneyEntity.class,id));
+    }
+
+    public void save(JourneyEntity journey) {
+        entityManager.merge(journey);
     }
 }
