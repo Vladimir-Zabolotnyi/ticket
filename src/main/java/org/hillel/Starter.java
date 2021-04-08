@@ -76,7 +76,7 @@ public class Starter {
         StopTimeEntity stopTimeEntity = new StopTimeEntity();
         stopTimeEntity.setStopSequence(1);
         stopTimeEntity.setArrivalTime(Instant.now().plusMillis(TimeUnit.MINUTES.toMillis(60L)));
-        stopTimeEntity.setDepartureTime(Instant.now().plusMillis(65L));
+        stopTimeEntity.setDepartureTime(Instant.now().plusMillis(TimeUnit.MINUTES.toMillis(65L)));
         stopTimeEntity.setStop(stopEntity);
 
         journeyEntity.addStopTime(stopTimeEntity);
