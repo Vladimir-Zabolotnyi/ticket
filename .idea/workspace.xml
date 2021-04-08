@@ -5,28 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08f91e42-f6b4-4d4a-86f1-8942106e05f0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/SeatEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/StopTimeEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/SeatRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/StopAdditionalInfoRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/StopTimeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/VehicleRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalSeatService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalStopAdditionalInfoService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalStopTimeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalVehicleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/Starter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/Starter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/CommonInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/CommonInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/JourneyEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/JourneyEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/SeatEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/SeatEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/StopAdditionalInfoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/StopAdditionalInfoEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/StopEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/StopEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/StopTimeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/StopTimeEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/VehicleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/VehicleEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/JourneyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/JourneyRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/StopRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/StopRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/TicketClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TicketClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalJourneyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalJourneyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalStopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalStopService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +126,7 @@
       <workItem from="1617708315932" duration="15782000" />
       <workItem from="1617777179564" duration="6205000" />
       <workItem from="1617873220999" duration="10552000" />
-      <workItem from="1617900074168" duration="7139000" />
+      <workItem from="1617900074168" duration="8572000" />
     </task>
     <task id="LOCAL-00001" summary="hw2 &#10;Added minIdle,maxPoolSize in HicariCP&#10;defaultTimeout in TransactionManager">
       <created>1616759595168</created>
@@ -163,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617735592921</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="hw3&#10;Added new Entities - Seat and StopTime&#10;&#10;Completed the repositories and service for all of the entities with two methods - create and save.">
+      <created>1617911320938</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1617911320938</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,7 +179,8 @@
     <MESSAGE value="lesson 4" />
     <MESSAGE value="corrections to hw2" />
     <MESSAGE value="lesson 5" />
-    <option name="LAST_COMMIT_MESSAGE" value="lesson 5" />
+    <MESSAGE value="hw3&#10;Added new Entities - Seat and StopTime&#10;&#10;Completed the repositories and service for all of the entities with two methods - create and save." />
+    <option name="LAST_COMMIT_MESSAGE" value="hw3&#10;Added new Entities - Seat and StopTime&#10;&#10;Completed the repositories and service for all of the entities with two methods - create and save." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

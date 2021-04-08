@@ -3,6 +3,7 @@ package org.hillel.persistence.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.StringJoiner;
@@ -12,7 +13,8 @@ import java.util.StringJoiner;
 @NoArgsConstructor
 @Entity
 @Table(name = "stop_additional_info")
-public class StopAdditionalInfoEntity {
+@DynamicUpdate
+public class StopAdditionalInfoEntity  {
     @Id
     @GeneratedValue
     private Long id;
@@ -22,6 +24,12 @@ public class StopAdditionalInfoEntity {
 
     @Column(name = "latitude",nullable = false)
     private double latitude;
+
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "year_of_built")
+    private int yearOfBuilt;
 
     @OneToOne
     @MapsId

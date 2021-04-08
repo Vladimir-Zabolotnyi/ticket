@@ -46,6 +46,8 @@ public class Starter {
 
         final VehicleEntity vehicleEntity = new VehicleEntity();
         vehicleEntity.setName("bus1");
+        vehicleEntity.setYearOfBuilt(1987);
+        vehicleEntity.setCountryOfBuilt("Germany");
         vehicleEntity.addSeat(seatEntity);
         vehicleEntity.addSeat(seatEntity1);
 
@@ -57,6 +59,8 @@ public class Starter {
         StopAdditionalInfoEntity stopAdditionalInfoEntity = new StopAdditionalInfoEntity();
         stopAdditionalInfoEntity.setLatitude(10D);
         stopAdditionalInfoEntity.setLongitude(176D);
+        stopAdditionalInfoEntity.setCity("City1");
+        stopAdditionalInfoEntity.setYearOfBuilt(1954);
 
         stopEntity.addStopAdditionalInfo(stopAdditionalInfoEntity);
         CommonInfo commonInfo = new CommonInfo();

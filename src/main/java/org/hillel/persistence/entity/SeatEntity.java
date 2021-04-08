@@ -3,13 +3,10 @@ package org.hillel.persistence.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import java.util.StringJoiner;
 
 @Getter
@@ -17,8 +14,8 @@ import java.util.StringJoiner;
 @NoArgsConstructor
 @Entity
 @Table(name = "seat")
-
-public class SeatEntity {
+@DynamicUpdate
+public class SeatEntity  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -3,6 +3,7 @@ package org.hillel.persistence.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.StringJoiner;
 @NoArgsConstructor
 @Entity
 @Table(name = "stop")
-
+@DynamicUpdate
 public class StopEntity extends AbstractModifyEntity<Long> {
 
     @Embedded

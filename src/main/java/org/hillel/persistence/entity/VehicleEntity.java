@@ -3,6 +3,7 @@ package org.hillel.persistence.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -15,17 +16,24 @@ import java.util.StringJoiner;
 @NoArgsConstructor
 @Entity
 @Table(name = "vehicle")
+@DynamicUpdate
 public class VehicleEntity extends AbstractModifyEntity<Long> {
 
-    @Column(name = "name",length = 30,nullable = false)
+    @Column(name = "name", length = 30, nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "vehicle",cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @Column(name = "year_of_built", length = 30, nullable = false)
+    private int yearOfBuilt;
+
+    @Column(name = "country_of_built", length = 30, nullable = false)
+    private String countryOfBuilt;
+
+    @OneToMany(mappedBy = "vehicle", cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
     private List<SeatEntity> seats = new ArrayList<>();
 
-    public void addSeat(final SeatEntity seat){
+    public void addSeat(final SeatEntity seat) {
         if (Objects.isNull(seat)) throw new IllegalArgumentException("seat is null");
-        if (seats == null){
+        if (seats == null) {
             seats = new ArrayList<>();
         }
         seats.add(seat);
@@ -35,9 +43,9 @@ public class VehicleEntity extends AbstractModifyEntity<Long> {
     @OneToMany(mappedBy = "vehicle")
     private List<JourneyEntity> journeys = new ArrayList<>();
 
-    public void addJourney(final JourneyEntity journey){
+    public void addJourney(final JourneyEntity journey) {
         if (Objects.isNull(journey)) throw new IllegalArgumentException("journey is null");
-        if (journeys == null){
+        if (journeys == null) {
             journeys = new ArrayList<>();
         }
         journeys.add(journey);

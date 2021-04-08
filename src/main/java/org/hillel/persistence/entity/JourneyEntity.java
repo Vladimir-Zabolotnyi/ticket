@@ -50,21 +50,6 @@ public class JourneyEntity extends AbstractModifyEntity<Long> {
         this.vehicle = vehicle;
     }
 
-//    @ManyToMany(cascade = {CascadeType.PERSIST})
-//    @JoinTable(name = "journey_stop", /*indexes = @Index(name = "journey_stop",columnList = "journey_id,stop_id"),*/
-//            joinColumns = @JoinColumn(name = "journey_id"),
-//            inverseJoinColumns = @JoinColumn(name = "stop_id")
-//    )
-//    private List<StopEntity> stops = new ArrayList<>();
-//
-//    public void addStop(final StopEntity stop) {
-//        if (Objects.isNull(stop)) return;
-//        if (stops == null) {
-//            stops = new ArrayList<>();
-//        }
-//        stops.add(stop);
-//        stop.addJourney(this);
-//    }
 
     @OneToMany(cascade = {CascadeType.PERSIST},fetch = FetchType.LAZY,mappedBy = "journey")
     private List<StopTimeEntity> stopsTime = new ArrayList<>();
@@ -106,7 +91,7 @@ public class JourneyEntity extends AbstractModifyEntity<Long> {
                 .add("direction=" + direction)
                 .add("stopsTime=" + stopsTime)
                 .add("vehicle=" + vehicle)
-                .add("seatsEntity=" + seats.stream().filter(seatEntity -> seatEntity.isSeatFree()==true).collect(Collectors.toList()))
+                .add("seatsEntity=" + seats.stream().filter(seatEntity -> seatEntity.isSeatFree()).collect(Collectors.toList()))
                 .toString();
     }
 }
