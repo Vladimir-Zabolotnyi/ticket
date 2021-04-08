@@ -13,16 +13,16 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Service(value = "transactionalJourneyService")
-public class TransactionalJourneyService implements JourneyService  {
+public class TransactionalJourneyService implements JourneyService {
     @Autowired
     private JourneyRepository journeyRepository;
 
 
     @Transactional
     @Override
-    public Long createJourney(final JourneyEntity journeyEntity) {
-        if (Objects.isNull(journeyEntity)) throw new IllegalArgumentException("journeyEntity is null");
-        return journeyRepository.create(journeyEntity);
+    public Long createJourney(final JourneyEntity journey) {
+        if (Objects.isNull(journey)) throw new IllegalArgumentException("journey is null");
+        return journeyRepository.create(journey);
     }
 
     @Override
@@ -34,17 +34,19 @@ public class TransactionalJourneyService implements JourneyService  {
     @Transactional(readOnly = true)
     public Optional<JourneyEntity> getById(Long id, boolean withDependencies) {
         Optional<JourneyEntity> byId = journeyRepository.findById(id);
-        if(withDependencies && byId.isPresent()){
-            final  JourneyEntity journeyEntity = byId.get();
+        if (withDependencies && byId.isPresent()) {
+            final JourneyEntity journeyEntity = byId.get();
             journeyEntity.getVehicle().getName();
-            journeyEntity.getStops().size();
+            journeyEntity.getStopsTime().size();
+            journeyEntity.getSeats().size();
         }
         return byId;
     }
 
     @Override
     @Transactional
-    public void save(JourneyEntity journey) {
+    public void save(final JourneyEntity journey) {
+        if (Objects.isNull(journey)) throw new IllegalArgumentException("journey is null");
         journeyRepository.save(journey);
     }
 }

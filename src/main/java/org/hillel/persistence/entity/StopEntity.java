@@ -18,33 +18,24 @@ import java.util.StringJoiner;
 
 public class StopEntity extends AbstractModifyEntity<Long> {
 
-@Embedded
-private CommonInfo commonInfo;
+    @Embedded
+    private CommonInfo commonInfo;
 
-@OneToOne(mappedBy = "stop",cascade = {CascadeType.PERSIST} )
+    @Transient
+    private boolean applyToJourneyBuild;
+
+    @OneToOne(mappedBy = "stop", cascade = {CascadeType.PERSIST})
     private StopAdditionalInfoEntity additionalInfo;
 
-@ManyToMany(mappedBy = "stops")
-private List<JourneyEntity> journeys = new ArrayList<>();
-@Transient
-private boolean applyToJourneyBuild;
-
-public void addStopAdditionalInfo(StopAdditionalInfoEntity stopAdditionalInfo){
-    if(stopAdditionalInfo == null){
-        this.additionalInfo = null;
-        return;
-    }
-    stopAdditionalInfo.setStop(this);
-    this.additionalInfo=stopAdditionalInfo;
-}
-
-    public void addJourney(JourneyEntity journey) {
-        if (Objects.isNull(journey)) return;
-        if (journeys == null) {
-            journeys = new ArrayList<>();
+    public void addStopAdditionalInfo(StopAdditionalInfoEntity stopAdditionalInfo) {
+        if (stopAdditionalInfo == null) {
+            this.additionalInfo = null;
+            return;
         }
-        journeys.add(journey);
+        stopAdditionalInfo.setStop(this);
+        this.additionalInfo = stopAdditionalInfo;
     }
+
 
     @Override
     public String toString() {

@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.StringJoiner;
 
 @Getter
 @Setter
@@ -26,4 +27,13 @@ public class StopAdditionalInfoEntity {
     @MapsId
     @JoinColumn(name="stop_id")
     private StopEntity stop;
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", StopAdditionalInfoEntity.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("longitude=" + longitude)
+                .add("latitude=" + latitude)
+                .toString();
+    }
 }

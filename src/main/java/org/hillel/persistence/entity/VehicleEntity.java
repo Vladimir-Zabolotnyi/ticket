@@ -16,11 +16,21 @@ import java.util.StringJoiner;
 @Entity
 @Table(name = "vehicle")
 public class VehicleEntity extends AbstractModifyEntity<Long> {
-//   @Embedded
-//    private CommonInfo commonInfo;
 
     @Column(name = "name",length = 30,nullable = false)
     private String name;
+
+    @OneToMany(mappedBy = "vehicle",cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    private List<SeatEntity> seats = new ArrayList<>();
+
+    public void addSeat(final SeatEntity seat){
+        if (Objects.isNull(seat)) throw new IllegalArgumentException("seat is null");
+        if (seats == null){
+            seats = new ArrayList<>();
+        }
+        seats.add(seat);
+        seat.setVehicle(this);
+    }
 
     @OneToMany(mappedBy = "vehicle")
     private List<JourneyEntity> journeys = new ArrayList<>();

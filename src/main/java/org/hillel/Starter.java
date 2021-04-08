@@ -10,7 +10,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 import java.time.Instant;
+import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 public class Starter {
     public static void main(String[] args) throws IOException, IllegalAccessException, InstantiationException, ClassNotFoundException {
@@ -28,35 +30,59 @@ public class Starter {
         journeyEntity.setDirection(DirectionType.TO);
         journeyEntity.setActive(false);
 
+
+        SeatEntity seatEntity = new SeatEntity();
+        seatEntity.setCarriageNumber("1");
+        seatEntity.setSeatNumber("1A");
+        seatEntity.setSeatFree(false);
+        seatEntity.setJourney(journeyEntity);
+
+        SeatEntity seatEntity1 = new SeatEntity();
+        seatEntity1.setCarriageNumber("12");
+        seatEntity1.setSeatNumber("1A");
+        seatEntity1.setSeatFree(true);
+        seatEntity1.setJourney(journeyEntity);
+
+
         final VehicleEntity vehicleEntity = new VehicleEntity();
         vehicleEntity.setName("bus1");
+        vehicleEntity.addSeat(seatEntity);
+        vehicleEntity.addSeat(seatEntity1);
+
         journeyEntity.addVehicle(vehicleEntity);
 
+
+        StopEntity stopEntity = new StopEntity();
 
         StopAdditionalInfoEntity stopAdditionalInfoEntity = new StopAdditionalInfoEntity();
         stopAdditionalInfoEntity.setLatitude(10D);
         stopAdditionalInfoEntity.setLongitude(176D);
 
-        StopEntity stopEntity = new StopEntity();
         stopEntity.addStopAdditionalInfo(stopAdditionalInfoEntity);
-
         CommonInfo commonInfo = new CommonInfo();
+
         commonInfo.setName("stop 1");
         commonInfo.setDescription("stop 1 description");
 
         stopEntity.setCommonInfo(commonInfo);
-
         stopEntity.setApplyToJourneyBuild(stopEntity.isActive());
-        journeyEntity.addStop(stopEntity);
+
+
+
+        StopTimeEntity stopTimeEntity = new StopTimeEntity();
+        stopTimeEntity.setStopSequence(1);
+        stopTimeEntity.setArrivalTime(Instant.now().plusMillis(TimeUnit.MINUTES.toMillis(60L)));
+        stopTimeEntity.setDepartureTime(Instant.now().plusMillis(65L));
+        stopTimeEntity.setStop(stopEntity);
+
+        journeyEntity.addStopTime(stopTimeEntity);
+
         ticketClient.createJourney(journeyEntity);
-//        ticketClient.createStop(stopEntity);
+
         final Optional<JourneyEntity> journeyById = ticketClient.getJourneyById(journeyEntity.getId(), true);
         final JourneyEntity journey = journeyById.get();
-        System.out.println("get all stops by journey " + journey.getStops());
-        System.out.println("create journey with id= " + journeyById);
-        journey.setDirection(DirectionType.FROM);
-        ticketClient.saveJourney(journey);
 
+        System.out.println("create journey with id= " + journey);
 
     }
 }

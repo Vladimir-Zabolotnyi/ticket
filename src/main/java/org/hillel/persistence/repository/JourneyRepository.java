@@ -13,17 +13,17 @@ public class JourneyRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public Long create(final JourneyEntity journeyEntity){
-        if (Objects.isNull(journeyEntity)) throw new IllegalArgumentException("journeyEntity is null");
-    entityManager.persist(journeyEntity);
-    return journeyEntity.getId();
+    public Long create(final JourneyEntity journey){
+        if (Objects.isNull(journey)) throw new IllegalArgumentException("journey is null");
+    entityManager.persist(journey);
+    return journey.getId();
     }
 
     public Optional<JourneyEntity> findById(Long id) {
        return Optional.ofNullable(entityManager.find(JourneyEntity.class,id));
     }
 
-    public void save(JourneyEntity journey) {
+    public void save(final JourneyEntity journey) {
         entityManager.merge(journey);
     }
 }
