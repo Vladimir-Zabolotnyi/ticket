@@ -18,13 +18,9 @@ public class TransactionalVehicleService {
 
 
     @Transactional
-    public Long createVehicle(final VehicleEntity vehicle) {
+    public VehicleEntity createOrUodateVehicle(final VehicleEntity vehicle) {
         if (Objects.isNull(vehicle)) throw new IllegalArgumentException("vehicle is null");
-        return vehicleRepository.create(vehicle);
+        return vehicleRepository.createOrUpdate(vehicle);
     }
-    @Transactional
-    public void save(final VehicleEntity vehicle) {
-        if (Objects.isNull(vehicle)) throw new IllegalArgumentException("vehicle is null");
-        vehicleRepository.save(vehicle);
-    }
+
 }

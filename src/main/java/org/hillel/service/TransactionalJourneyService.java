@@ -13,26 +13,20 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Service(value = "transactionalJourneyService")
-public class TransactionalJourneyService implements JourneyService {
+public class TransactionalJourneyService {
     @Autowired
     private JourneyRepository journeyRepository;
 
 
     @Transactional
-    @Override
-    public Long createJourney(final JourneyEntity journey) {
-        if (Objects.isNull(journey)) throw new IllegalArgumentException("journey is null");
-        return journeyRepository.create(journey);
+    public JourneyEntity createOrUpdateJourney(final JourneyEntity entity) {
+        if (Objects.isNull(entity)) throw new IllegalArgumentException("entity is null");
+        return journeyRepository.createOrUpdate(entity);
     }
 
-    @Override
-    public Collection<Journey> find(String stationFrom, String stationTo, LocalDateTime departure, LocalDateTime arrival) {
-        return null;
-    }
 
-    @Override
     @Transactional(readOnly = true)
-    public Optional<JourneyEntity> getById(Long id, boolean withDependencies) {
+    public Optional<JourneyEntity> findById(Long id, boolean withDependencies) {
         Optional<JourneyEntity> byId = journeyRepository.findById(id);
         if (withDependencies && byId.isPresent()) {
             final JourneyEntity journeyEntity = byId.get();
@@ -43,10 +37,4 @@ public class TransactionalJourneyService implements JourneyService {
         return byId;
     }
 
-    @Override
-    @Transactional
-    public void save(final JourneyEntity journey) {
-        if (Objects.isNull(journey)) throw new IllegalArgumentException("journey is null");
-        journeyRepository.save(journey);
-    }
 }

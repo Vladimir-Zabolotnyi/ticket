@@ -9,21 +9,9 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Repository
-public class JourneyRepository {
-    @PersistenceContext
-    private EntityManager entityManager;
+public class JourneyRepository extends CommonRepository<JourneyEntity,Long>{
 
-    public Long create(final JourneyEntity journey){
-        if (Objects.isNull(journey)) throw new IllegalArgumentException("journey is null");
-    entityManager.persist(journey);
-    return journey.getId();
-    }
-
-    public Optional<JourneyEntity> findById(Long id) {
-       return Optional.ofNullable(entityManager.find(JourneyEntity.class,id));
-    }
-
-    public void save(final JourneyEntity journey) {
-        entityManager.merge(journey);
+    protected JourneyRepository() {
+        super(JourneyEntity.class);
     }
 }

@@ -81,9 +81,9 @@ public class Starter {
 
         journeyEntity.addStopTime(stopTimeEntity);
 
-        ticketClient.createJourney(journeyEntity);
+        ticketClient.createOrUpdateJourney(journeyEntity);
 
-        final Optional<JourneyEntity> journeyById = ticketClient.getJourneyById(journeyEntity.getId(), true);
+        final Optional<JourneyEntity> journeyById = ticketClient.findJourneyById(journeyEntity.getId(), true);
         final JourneyEntity journey = journeyById.get();
 
         System.out.println("create journey with id= " + journey);

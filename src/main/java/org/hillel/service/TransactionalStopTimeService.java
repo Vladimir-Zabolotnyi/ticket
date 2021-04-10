@@ -18,13 +18,8 @@ public class TransactionalStopTimeService {
 
 
     @Transactional
-    public Long createStopTime(final StopTimeEntity stopTime) {
+    public StopTimeEntity createOrUpdateStopTime(final StopTimeEntity stopTime) {
         if (Objects.isNull(stopTime)) throw new IllegalArgumentException("stopTime is null");
-        return stopTimeRepository.create(stopTime);
-    }
-    @Transactional
-    public void save(final StopTimeEntity stopTime) {
-        if (Objects.isNull(stopTime)) throw new IllegalArgumentException("stopTime is null");
-        stopTimeRepository.save(stopTime);
+        return stopTimeRepository.createOrUpdate(stopTime);
     }
 }

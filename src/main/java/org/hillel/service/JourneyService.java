@@ -12,12 +12,8 @@ public interface JourneyService {
 
 
     @Transactional
-    Long createJourney(JourneyEntity journeyEntity);
+    JourneyEntity createOrUpdateJourney(JourneyEntity journeyEntity);
 
-    Collection<Journey> find(final String stationFrom, final String stationTo, final LocalDateTime departure,
-                             final LocalDateTime arrival);
+    Optional<JourneyEntity> findById(Long id,boolean withDependencies);
 
-    Optional<JourneyEntity> getById(Long id,boolean withDependencies);
-
-    void save(JourneyEntity journey);
-}
+    }

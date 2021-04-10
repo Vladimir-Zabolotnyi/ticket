@@ -15,11 +15,7 @@ import java.util.StringJoiner;
 @Entity
 @Table(name = "seat")
 @DynamicUpdate
-public class SeatEntity  {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class SeatEntity extends AbstractModifyEntity<Long> {
 
     @ManyToOne(cascade ={CascadeType.PERSIST})
     @JoinColumn(name = "journey_id")

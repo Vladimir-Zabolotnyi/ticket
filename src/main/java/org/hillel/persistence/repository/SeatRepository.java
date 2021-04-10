@@ -10,18 +10,10 @@ import javax.persistence.PersistenceContext;
 import java.util.Objects;
 
 @Repository
-public class SeatRepository {
+public class SeatRepository extends CommonRepository<SeatEntity,Long>{
 
-    @PersistenceContext
-    private EntityManager entityManager;
 
-    public Long create(final SeatEntity seat) {
-        if (Objects.isNull(seat)) throw new IllegalArgumentException("seat is null");
-        entityManager.persist(seat);
-        return seat.getId();
-    }
-
-    public void save(final SeatEntity seat) {
-        entityManager.merge(seat);
+    protected SeatRepository() {
+        super(SeatEntity.class);
     }
 }

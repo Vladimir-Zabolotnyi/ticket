@@ -10,17 +10,9 @@ import javax.persistence.PersistenceContext;
 import java.util.Objects;
 
 @Repository
-public class VehicleRepository {
-    @PersistenceContext
-    private EntityManager entityManager;
+public class VehicleRepository extends CommonRepository<VehicleEntity,Long>{
 
-    public Long create(final VehicleEntity vehicle) {
-        if (Objects.isNull(vehicle)) throw new IllegalArgumentException("vehicle is null");
-        entityManager.persist(vehicle);
-        return vehicle.getId();
-    }
-
-    public void save(final VehicleEntity vehicle) {
-        entityManager.merge(vehicle);
+    protected VehicleRepository() {
+        super(VehicleEntity.class);
     }
 }

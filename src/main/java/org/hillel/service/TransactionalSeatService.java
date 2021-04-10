@@ -18,14 +18,10 @@ public class TransactionalSeatService {
 
 
     @Transactional
-    public Long createSeat(final SeatEntity seat) {
+    public SeatEntity createOrUpdateSeat(final SeatEntity seat) {
         if (Objects.isNull(seat)) throw new IllegalArgumentException("seat is null");
-        return seatRepository.create(seat);
+        return seatRepository.createOrUpdate(seat);
     }
 
-    @Transactional
-    public void save(final SeatEntity seat) {
-        if (Objects.isNull(seat)) throw new IllegalArgumentException("seat is null");
-        seatRepository.save(seat);
-    }
+
 }

@@ -19,16 +19,9 @@ public class TransactionalStopService {
     @Autowired
    private StopRepository stopRepository;
 
-
     @Transactional
-    public Long createStop(final StopEntity stop) {
+    public StopEntity createOrUpdateStop(final StopEntity stop) {
         if (Objects.isNull(stop)) throw new IllegalArgumentException("stop is null");
-        return stopRepository.create(stop);
-    }
-
-    @Transactional
-    public void save(final StopEntity stop) {
-        if (Objects.isNull(stop)) throw new IllegalArgumentException("stop is null");
-        stopRepository.save(stop);
+        return stopRepository.createOrUpdate(stop);
     }
 }

@@ -10,18 +10,10 @@ import javax.persistence.PersistenceContext;
 import java.util.Objects;
 
 @Repository
-public class StopTimeRepository {
+public class StopTimeRepository extends CommonRepository<StopTimeEntity,Long>  {
 
-    @PersistenceContext
-    private EntityManager entityManager;
 
-    public Long create(final StopTimeEntity stopTime) {
-        if (Objects.isNull(stopTime)) throw new IllegalArgumentException("stopTime is null");
-        entityManager.persist(stopTime);
-        return stopTime.getId();
-    }
-
-    public void save(final StopTimeEntity stopTime) {
-        entityManager.merge(stopTime);
+    protected StopTimeRepository() {
+        super(StopTimeEntity.class);
     }
 }
