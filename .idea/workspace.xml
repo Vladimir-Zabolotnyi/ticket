@@ -7,7 +7,9 @@
     <list default="true" id="08f91e42-f6b4-4d4a-86f1-8942106e05f0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/Starter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/Starter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/JourneyEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/JourneyEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/StopAdditionalInfoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/StopAdditionalInfoEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/StopTimeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/StopTimeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/VehicleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/VehicleEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +127,7 @@
       <workItem from="1617873220999" duration="10552000" />
       <workItem from="1617900074168" duration="8763000" />
       <workItem from="1618032197372" duration="3744000" />
-      <workItem from="1618209093480" duration="575000" />
+      <workItem from="1618209093480" duration="5588000" />
     </task>
     <task id="LOCAL-00001" summary="hw2 &#10;Added minIdle,maxPoolSize in HicariCP&#10;defaultTimeout in TransactionManager">
       <created>1616759595168</created>
@@ -169,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617912541918</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="hw3&#10;Method AddSeat to JourneyEntity">
+      <created>1618209866359</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1618209866360</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,7 +204,8 @@
     <MESSAGE value="hw3&#10;Added new Entities - Seat and StopTime&#10;&#10;Completed the repositories and service for all of the entities with two methods - create and save." />
     <MESSAGE value="hw3&#10;Correction to Entities(adding Columns)" />
     <MESSAGE value="hw3&#10;Minor corrections" />
-    <option name="LAST_COMMIT_MESSAGE" value="hw3&#10;Minor corrections" />
+    <MESSAGE value="hw3&#10;Method AddSeat to JourneyEntity" />
+    <option name="LAST_COMMIT_MESSAGE" value="hw3&#10;Method AddSeat to JourneyEntity" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

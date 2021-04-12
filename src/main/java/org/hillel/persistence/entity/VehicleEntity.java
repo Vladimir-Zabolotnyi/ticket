@@ -23,7 +23,7 @@ public class VehicleEntity extends AbstractModifyEntity<Long> {
     private String name;
 
     @Column(name = "year_of_built", length = 30, nullable = false)
-    private int yearOfBuilt;
+    private Integer yearOfBuilt;
 
     @Column(name = "country_of_built", length = 30, nullable = false)
     private String countryOfBuilt;

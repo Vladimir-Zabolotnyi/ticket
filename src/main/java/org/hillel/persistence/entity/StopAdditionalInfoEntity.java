@@ -20,16 +20,16 @@ public class StopAdditionalInfoEntity  {
     private Long id;
 
     @Column(name = "longitude",nullable = false)
-    private double longitude;
+    private Double longitude;
 
     @Column(name = "latitude",nullable = false)
-    private double latitude;
+    private Double latitude;
 
     @Column(name = "city")
     private String city;
 
     @Column(name = "year_of_built")
-    private int yearOfBuilt;
+    private Integer yearOfBuilt;
 
     @OneToOne
     @MapsId

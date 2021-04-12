@@ -32,7 +32,7 @@ public class StopTimeEntity extends AbstractModifyEntity<Long> {
     private Instant departureTime;
 
     @Column(name = "stop_sequence")
-    private int stopSequence;
+    private Integer stopSequence;
 
     @Override
     public String toString() {
