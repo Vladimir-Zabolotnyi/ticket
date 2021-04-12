@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 
 @Configuration
@@ -51,9 +52,9 @@ public class DatabaseConfig {
         entityManagerFactory.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         Properties properties = new Properties();
         properties.put("hibernate.dialect", PostgreSQL10Dialect.class.getName());
-        properties.put("hibernate.hbm2ddl.auto", "create-drop");
+        properties.put("hibernate.hbm2ddl.auto", "create");
         properties.put("hibernate.show_sql", "true");
-        properties.put("javax.persistence.query.timeout", 3000);
+        properties.put("javax.persistence.query.timeout", TimeUnit.MINUTES.toMillis(5L));
         entityManagerFactory.setJpaProperties(properties);
         return entityManagerFactory;
     }

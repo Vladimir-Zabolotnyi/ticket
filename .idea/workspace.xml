@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="08f91e42-f6b4-4d4a-86f1-8942106e05f0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/config/DatabaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/config/DatabaseConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/Starter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/Starter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/JourneyEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/JourneyEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,22 +18,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="spring-beans.schema" />
+        <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$MAVEN_REPOSITORY$/com/zaxxer/HikariCP/4.0.3/HikariCP-4.0.3.jar!/com/zaxxer/hikari/HikariConfig.class" root0="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2.2\plugins\maven\lib\maven3" />
-      </MavenGeneralSettings>
-    </option>
   </component>
   <component name="ProjectId" id="1q1QeHOZtLBbNNBJHAQ9vyGQHgx" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -48,6 +41,12 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="GitIgnore" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -59,6 +58,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.hillel.persistence.repository" />
       <recent name="org.hillel.service" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -69,6 +69,12 @@
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="org.hillel.service" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.hillel.service" />
+      <recent name="org.hillel.persistence.repository" />
+      <recent name="org.hillel.persistence.entity" />
+      <recent name="org.hillel.persistence" />
     </key>
   </component>
   <component name="RunManager">
@@ -85,13 +91,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -112,6 +120,12 @@
       <updated>1616244712900</updated>
       <workItem from="1616421299057" duration="8405000" />
       <workItem from="1616431630044" duration="11761000" />
+      <workItem from="1617708315932" duration="15782000" />
+      <workItem from="1617777179564" duration="6205000" />
+      <workItem from="1617873220999" duration="10552000" />
+      <workItem from="1617900074168" duration="8763000" />
+      <workItem from="1618032197372" duration="3744000" />
+      <workItem from="1618209093480" duration="575000" />
     </task>
     <task id="LOCAL-00001" summary="hw2 &#10;Added minIdle,maxPoolSize in HicariCP&#10;defaultTimeout in TransactionManager">
       <created>1616759595168</created>
@@ -120,7 +134,42 @@
       <option name="project" value="LOCAL" />
       <updated>1616759595168</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="corrections to hw2">
+      <created>1617621891603</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1617621891603</updated>
+    </task>
+    <task id="LOCAL-00003" summary="lesson 5">
+      <created>1617735592920</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1617735592921</updated>
+    </task>
+    <task id="LOCAL-00004" summary="hw3&#10;Added new Entities - Seat and StopTime&#10;&#10;Completed the repositories and service for all of the entities with two methods - create and save.">
+      <created>1617911320938</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1617911320938</updated>
+    </task>
+    <task id="LOCAL-00005" summary="hw3&#10;Correction to Entities(adding Columns)">
+      <created>1617912400535</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1617912400535</updated>
+    </task>
+    <task id="LOCAL-00006" summary="hw3&#10;Minor corrections">
+      <created>1617912541918</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1617912541918</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,7 +189,13 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="hw2 &#10;Added minIdle,maxPoolSize in HicariCP&#10;defaultTimeout in TransactionManager" />
-    <option name="LAST_COMMIT_MESSAGE" value="hw2 &#10;Added minIdle,maxPoolSize in HicariCP&#10;defaultTimeout in TransactionManager" />
+    <MESSAGE value="lesson 4" />
+    <MESSAGE value="corrections to hw2" />
+    <MESSAGE value="lesson 5" />
+    <MESSAGE value="hw3&#10;Added new Entities - Seat and StopTime&#10;&#10;Completed the repositories and service for all of the entities with two methods - create and save." />
+    <MESSAGE value="hw3&#10;Correction to Entities(adding Columns)" />
+    <MESSAGE value="hw3&#10;Minor corrections" />
+    <option name="LAST_COMMIT_MESSAGE" value="hw3&#10;Minor corrections" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
