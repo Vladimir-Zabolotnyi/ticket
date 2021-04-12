@@ -35,13 +35,11 @@ public class Starter {
         seatEntity.setCarriageNumber("1");
         seatEntity.setSeatNumber("1A");
         seatEntity.setSeatFree(false);
-        seatEntity.setJourney(journeyEntity);
 
         SeatEntity seatEntity1 = new SeatEntity();
         seatEntity1.setCarriageNumber("12");
         seatEntity1.setSeatNumber("1A");
         seatEntity1.setSeatFree(true);
-        seatEntity1.setJourney(journeyEntity);
 
 
         final VehicleEntity vehicleEntity = new VehicleEntity();
@@ -52,6 +50,8 @@ public class Starter {
         vehicleEntity.addSeat(seatEntity1);
 
         journeyEntity.addVehicle(vehicleEntity);
+        journeyEntity.addSeat(seatEntity);
+        journeyEntity.addSeat(seatEntity1);
 
 
         StopEntity stopEntity = new StopEntity();

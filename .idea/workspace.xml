@@ -5,26 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08f91e42-f6b4-4d4a-86f1-8942106e05f0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/CommonRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/GenericRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/Starter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/Starter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/SeatEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/SeatEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/StopTimeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/StopTimeEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/JourneyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/JourneyRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/SeatRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/SeatRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/StopAdditionalInfoRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/StopRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/StopRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/StopTimeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/StopTimeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/VehicleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/VehicleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/JourneyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/JourneyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/TicketClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TicketClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalJourneyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalJourneyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalSeatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalSeatService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalStopAdditionalInfoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalStopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalStopService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalStopTimeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalStopTimeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalVehicleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalVehicleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/JourneyEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/JourneyEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,13 +91,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -140,6 +125,7 @@
       <workItem from="1617873220999" duration="10552000" />
       <workItem from="1617900074168" duration="8763000" />
       <workItem from="1618032197372" duration="3744000" />
+      <workItem from="1618209093480" duration="575000" />
     </task>
     <task id="LOCAL-00001" summary="hw2 &#10;Added minIdle,maxPoolSize in HicariCP&#10;defaultTimeout in TransactionManager">
       <created>1616759595168</created>

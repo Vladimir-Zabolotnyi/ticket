@@ -66,6 +66,14 @@ public class JourneyEntity extends AbstractModifyEntity<Long> {
     @OneToMany(cascade = {CascadeType.PERSIST},fetch = FetchType.LAZY,mappedBy = "journey")
     private List<SeatEntity> seats = new ArrayList<>();
 
+    public void addSeat(final SeatEntity seat) {
+        if (Objects.isNull(seat)) return;
+        if (seats == null) {
+            seats = new ArrayList<>();
+        }
+        seats.add(seat);
+        seat.setJourney(this);
+    }
 
     @Override
     public boolean equals(Object o) {
