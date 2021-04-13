@@ -21,7 +21,7 @@ public class StopTimeEntity extends AbstractModifyEntity<Long> {
     @JoinColumn(name = "journey_id")
     private JourneyEntity journey;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST})
+    @ManyToOne()
     @JoinColumn(name = "stop_id")
     private StopEntity stop;
 

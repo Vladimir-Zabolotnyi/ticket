@@ -33,6 +33,7 @@ public class Starter {
         journey1=ticketClient.createOrUpdateJourney(journey1);
 
         journey1.addSeat(seat);
+
         ticketClient.createOrUpdateJourney(journey1);
 
         StopEntity stop1=buildStop(1D,2D,"s",1923,"dsd","dsd");

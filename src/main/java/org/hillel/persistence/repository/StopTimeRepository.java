@@ -15,17 +15,4 @@ public class StopTimeRepository extends CommonRepository<StopTimeEntity, Long> {
         super(StopTimeEntity.class);
     }
 
-    @Override
-    public StopTimeEntity createOrUpdate(StopTimeEntity entity) {
-        if (Objects.isNull(entity)) throw new IllegalArgumentException("entity is null");
-
-        StopEntity stop = entity.getStop();
-        if (Objects.nonNull(stop)) {
-            if (!entityManager.contains(stop)) {
-                entity.setStop(entityManager.merge(stop));
-            }
-        }
-        return super.createOrUpdate(entity);
-
-    }
 }
