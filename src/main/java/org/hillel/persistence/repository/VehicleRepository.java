@@ -10,9 +10,18 @@ import javax.persistence.PersistenceContext;
 import java.util.Objects;
 
 @Repository
-public class VehicleRepository extends CommonRepository<VehicleEntity,Long>{
+public class VehicleRepository extends CommonRepository<VehicleEntity, Long> {
+
 
     protected VehicleRepository() {
         super(VehicleEntity.class);
+    }
+
+    @Override
+    public void remove(VehicleEntity entity) {
+        if (Objects.isNull(entity)) throw new IllegalArgumentException("entity is null");
+        entity = findById(entity.getId()).get();
+        entity.removeAllJourney();
+        super.remove(entity);
     }
 }

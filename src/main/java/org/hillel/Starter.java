@@ -10,64 +10,43 @@ import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.time.Instant;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 public class Starter {
     public static void main(String[] args) throws IOException, IllegalAccessException, InstantiationException, ClassNotFoundException {
-//        AppContext.load("application.properties");
-        final ApplicationContext applicationContext = new AnnotationConfigApplicationContext(RootConfig.class);
-
+//        AppContext.load("application.properties")
 //        final ApplicationContext applicationContext = new ClassPathXmlApplicationContext("common-beans.xml");
+
+        final ApplicationContext applicationContext = new AnnotationConfigApplicationContext(RootConfig.class);
         final TicketClient ticketClient = applicationContext.getBean(TicketClient.class);
 
+        VehicleEntity vehicle1 = buildVehicle("bus1", 1987, "Germany");
+        vehicle1 = ticketClient.createOrUpdateVehicle(vehicle1);
+
+        SeatEntity seat = buildSeat(vehicle1,true,"1","2");
+        ticketClient.createOrUpdateSeat(seat);
+
         JourneyEntity journey1 = buildJourney("Kiev", "Lvov", Instant.now(), Instant.now().plusMillis(100000000L));
-        journey1.addStopTime(builtStopTime(buildStop(10D,176D,"City1",1954,"stop1","desc1"),
-                Instant.now().plusMillis(TimeUnit.MINUTES.toMillis(60L)),Instant.now().plusMillis(TimeUnit.MINUTES.toMillis(65L)),1));
-        VehicleEntity vehicle1 = buildVehicle("bus1",1987,"Germany");
         journey1.addVehicle(vehicle1);
-        journey1.addSeat(buildSeat(vehicle1,false,"1","1A"));
-        journey1 = ticketClient.createOrUpdateJourney(journey1);
+        journey1=ticketClient.createOrUpdateJourney(journey1);
 
-//        final Optional<JourneyEntity> journeyById = ticketClient.findJourneyById(journey1.getId(), true);
-//        final JourneyEntity journey = journeyById.get();
-//
-//        System.out.println("create journey with id= " + journey);
-//
-//
-//
-//
-//        SeatEntity seatEntity = new SeatEntity();
-//        seatEntity.setCarriageNumber("1");
-//        seatEntity.setSeatNumber("1A");
-//        seatEntity.setSeatFree(false);
-//
-//        SeatEntity seatEntity1 = new SeatEntity();
-//        seatEntity1.setCarriageNumber("12");
-//        seatEntity1.setSeatNumber("1A");
-//        seatEntity1.setSeatFree(true);
+        journey1.addSeat(seat);
+        ticketClient.createOrUpdateJourney(journey1);
+
+        StopEntity stop1=buildStop(1D,2D,"s",1923,"dsd","dsd");
+        ticketClient.createOrUpdateStop(stop1);
+
+        StopTimeEntity stopTimeEntity=builtStopTime(stop1,Instant.now(), Instant.now().plusMillis(100000000L),1);
+        ticketClient.createOrUpdateStopTime(stopTimeEntity);
+
+        journey1.addStopTime(stopTimeEntity);
+        ticketClient.createOrUpdateJourney(journey1);
+
+        ticketClient.removeStop(stop1);
 
 
-//        final VehicleEntity vehicleEntity = new VehicleEntity();
-//        vehicleEntity.setName("bus1");
-//        vehicleEntity.setYearOfBuilt(1987);
-//        vehicleEntity.setCountryOfBuilt("Germany");
-//        vehicleEntity.addSeat(seatEntity);
-//        vehicleEntity.addSeat(seatEntity1);
-//
-//        journeyEntity.addVehicle(vehicleEntity);
-//        journeyEntity.addSeat(seatEntity);
-//        journeyEntity.addSeat(seatEntity1);
-
-//        StopTimeEntity stopTimeEntity = new StopTimeEntity();
-//        stopTimeEntity.setStopSequence(1);
-//        stopTimeEntity.setArrivalTime(Instant.now().plusMillis(TimeUnit.MINUTES.toMillis(60L)));
-//        stopTimeEntity.setDepartureTime(Instant.now().plusMillis(TimeUnit.MINUTES.toMillis(65L)));
-//        stopTimeEntity.setStop(stopEntity);
-//
-//        journeyEntity.addStopTime(stopTimeEntity);
     }
 
     private static JourneyEntity buildJourney(final String stationFrom, final String stationTo, final Instant dateFrom, final Instant dateTo) {
@@ -122,7 +101,7 @@ public class Starter {
         return vehicle;
     }
 
-    private static StopTimeEntity builtStopTime( final StopEntity stop, final Instant arrivalTime, final Instant departureTime, final Integer stopSequence) {
+    private static StopTimeEntity builtStopTime(final StopEntity stop, final Instant arrivalTime, final Instant departureTime, final Integer stopSequence) {
         if (Objects.isNull(stop)) throw new IllegalArgumentException("stop must be set!");
         if (Objects.isNull(arrivalTime)) throw new IllegalArgumentException("arrivalTime must be set!");
         if (Objects.isNull(departureTime)) throw new IllegalArgumentException("departureTime must be set!");
@@ -138,7 +117,7 @@ public class Starter {
     }
 
     private static SeatEntity buildSeat(final VehicleEntity vehicle, final boolean free, final String carriageNumber, final String seatNumber) {
-    if (Objects.isNull(vehicle)) throw new IllegalArgumentException("vehicle must be set!");
+        if (Objects.isNull(vehicle)) throw new IllegalArgumentException("vehicle must be set!");
         if (Objects.isNull(free)) throw new IllegalArgumentException("whether free must be decided!");
         if (Objects.isNull(carriageNumber)) throw new IllegalArgumentException("carriageNumber must be set!");
         if (Objects.isNull(seatNumber)) throw new IllegalArgumentException("seatNumber must be set!");
@@ -147,7 +126,7 @@ public class Starter {
         seat.setCarriageNumber(carriageNumber);
         seat.setSeatNumber(seatNumber);
         seat.setSeatFree(free);
-      seat.setVehicle(vehicle);
+        seat.setVehicle(vehicle);
 
         return seat;
     }

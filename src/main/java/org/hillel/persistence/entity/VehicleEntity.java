@@ -3,13 +3,13 @@ package org.hillel.persistence.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.action.internal.CollectionUpdateAction;
+import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.util.CollectionUtils;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.StringJoiner;
+import java.util.*;
 
 @Getter
 @Setter
@@ -17,6 +17,7 @@ import java.util.StringJoiner;
 @Entity
 @Table(name = "vehicle")
 @DynamicUpdate
+@DynamicInsert
 public class VehicleEntity extends AbstractModifyEntity<Long> {
 
     @Column(name = "name", length = 30, nullable = false)
@@ -28,7 +29,7 @@ public class VehicleEntity extends AbstractModifyEntity<Long> {
     @Column(name = "country_of_built", length = 30, nullable = false)
     private String countryOfBuilt;
 
-    @OneToMany(mappedBy = "vehicle", cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "vehicle", cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<SeatEntity> seats = new ArrayList<>();
 
     public void addSeat(final SeatEntity seat) {
@@ -57,5 +58,11 @@ public class VehicleEntity extends AbstractModifyEntity<Long> {
         return new StringJoiner(", ", VehicleEntity.class.getSimpleName() + "[", "]")
                 .add("name='" + name + "'")
                 .toString();
+    }
+
+    public void removeAllJourney() {
+        if ((CollectionUtils.isEmpty(journeys))) return;
+        journeys.forEach(item -> item.setVehicle((null)));
+
     }
 }

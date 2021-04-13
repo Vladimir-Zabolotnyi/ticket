@@ -14,6 +14,6 @@ public interface JourneyService {
     @Transactional
     JourneyEntity createOrUpdateJourney(JourneyEntity journeyEntity);
 
-    Optional<JourneyEntity> findById(Long id,boolean withDependencies);
+    Optional<JourneyEntity> findById(Long id, boolean withDependencies);
 
-    }
+}

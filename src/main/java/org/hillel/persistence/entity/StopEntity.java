@@ -3,6 +3,7 @@ package org.hillel.persistence.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
@@ -17,6 +18,7 @@ import java.util.StringJoiner;
 @Entity
 @Table(name = "stop")
 @DynamicUpdate
+@DynamicInsert
 public class StopEntity extends AbstractModifyEntity<Long> {
 
     @Embedded
@@ -25,7 +27,7 @@ public class StopEntity extends AbstractModifyEntity<Long> {
     @Transient
     private boolean applyToJourneyBuild;
 
-    @OneToOne(mappedBy = "stop", cascade = {CascadeType.PERSIST})
+    @OneToOne(mappedBy = "stop", cascade = {CascadeType.PERSIST}, orphanRemoval = true)
     private StopAdditionalInfoEntity additionalInfo;
 
     public void addStopAdditionalInfo(StopAdditionalInfoEntity stopAdditionalInfo) {
@@ -37,6 +39,8 @@ public class StopEntity extends AbstractModifyEntity<Long> {
         this.additionalInfo = stopAdditionalInfo;
     }
 
+    @OneToMany(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY, mappedBy = "stop", orphanRemoval = true)
+    private List<StopTimeEntity> stopsTime = new ArrayList<>();
 
     @Override
     public String toString() {

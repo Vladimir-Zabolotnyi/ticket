@@ -7,21 +7,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.Objects;
 import java.util.Optional;
 
 @Service(value = "transactionalJourneyService")
 public class TransactionalJourneyService {
+
     @Autowired
     private JourneyRepository journeyRepository;
 
 
     @Transactional
-    public JourneyEntity createOrUpdateJourney(final JourneyEntity entity) {
-        if (Objects.isNull(entity)) throw new IllegalArgumentException("entity is null");
-        return journeyRepository.createOrUpdate(entity);
+    public JourneyEntity createOrUpdateJourney(final JourneyEntity journey) {
+        if (Objects.isNull(journey)) throw new IllegalArgumentException("journey is null");
+        return journeyRepository.createOrUpdate(journey);
     }
 
 
@@ -37,4 +36,15 @@ public class TransactionalJourneyService {
         return byId;
     }
 
+    @Transactional
+    public void remove(JourneyEntity journey) {
+        if (Objects.isNull(journey)) throw new IllegalArgumentException("journey is null");
+        journeyRepository.remove(journey);
+    }
+
+    @Transactional
+    public void removeById(Long journeyId) {
+        if (Objects.isNull(journeyId)) throw new IllegalArgumentException("journeyId is null");
+        journeyRepository.removeById(journeyId);
+    }
 }
