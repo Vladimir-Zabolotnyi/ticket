@@ -17,11 +17,11 @@ import java.util.StringJoiner;
 @DynamicUpdate
 public class StopTimeEntity extends AbstractModifyEntity<Long> {
 
-    @ManyToOne()
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "journey_id")
     private JourneyEntity journey;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST})
+    @ManyToOne()
     @JoinColumn(name = "stop_id")
     private StopEntity stop;
 
@@ -32,12 +32,12 @@ public class StopTimeEntity extends AbstractModifyEntity<Long> {
     private Instant departureTime;
 
     @Column(name = "stop_sequence")
-    private int stopSequence;
+    private Integer stopSequence;
 
     @Override
     public String toString() {
         return new StringJoiner(", ", StopTimeEntity.class.getSimpleName() + "[", "]")
-                .add("journey=" + journey.getStationFrom() +"-"+ journey.getStationTo())
+                .add("journey=" + journey.getStationFrom() + "-" + journey.getStationTo())
                 .add("stop=" + stop.getCommonInfo())
                 .add("arrivalTime=" + arrivalTime)
                 .add("departureTime=" + departureTime)

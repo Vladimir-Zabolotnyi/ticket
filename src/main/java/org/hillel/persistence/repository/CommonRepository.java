@@ -6,13 +6,14 @@ import org.springframework.util.Assert;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Objects;
 import java.util.Optional;
 
 public abstract class CommonRepository<E extends AbstractModifyEntity<ID>, ID extends Serializable> implements GenericRepository<E, ID> {
 
     @PersistenceContext
-    private EntityManager entityManager;
+    protected EntityManager entityManager;
     private final Class<E> entityClass;
 
     protected CommonRepository(Class<E> entityClass) {
@@ -38,11 +39,15 @@ public abstract class CommonRepository<E extends AbstractModifyEntity<ID>, ID ex
 
     @Override
     public void removeById(ID id) {
-
+        entityManager.remove(entityManager.getReference(entityClass,id));
     }
 
     @Override
     public void remove(E entity) {
-
+        if (entityManager.contains(entity)) {
+            entityManager.remove(entity);
+        } else {
+            removeById(entity.getId());
+        }
     }
 }

@@ -3,6 +3,7 @@ package org.hillel.persistence.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hillel.persistence.entity.enums.DirectionType;
 
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
 @Entity
 @Table(name = "journey")
 @DynamicUpdate
+@DynamicInsert
 public class JourneyEntity extends AbstractModifyEntity<Long> {
 
 
@@ -41,7 +43,7 @@ public class JourneyEntity extends AbstractModifyEntity<Long> {
     @Enumerated(EnumType.STRING)
     private DirectionType direction = DirectionType.TO;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinColumn(name = "vehicle_id")
     private VehicleEntity vehicle;
 
@@ -51,7 +53,7 @@ public class JourneyEntity extends AbstractModifyEntity<Long> {
     }
 
 
-    @OneToMany(cascade = {CascadeType.PERSIST},fetch = FetchType.LAZY,mappedBy = "journey")
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY, mappedBy = "journey", orphanRemoval = true)
     private List<StopTimeEntity> stopsTime = new ArrayList<>();
 
     public void addStopTime(final StopTimeEntity stopTime) {
@@ -63,7 +65,7 @@ public class JourneyEntity extends AbstractModifyEntity<Long> {
         stopTime.setJourney(this);
     }
 
-    @OneToMany(cascade = {CascadeType.PERSIST},fetch = FetchType.LAZY,mappedBy = "journey")
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY, mappedBy = "journey", orphanRemoval = true)
     private List<SeatEntity> seats = new ArrayList<>();
 
     public void addSeat(final SeatEntity seat) {
@@ -99,7 +101,7 @@ public class JourneyEntity extends AbstractModifyEntity<Long> {
                 .add("direction=" + direction)
                 .add("stopsTime=" + stopsTime)
                 .add("vehicle=" + vehicle)
-                .add("seatsEntity=" + seats.stream().filter(seatEntity -> seatEntity.isSeatFree()).collect(Collectors.toList()))
+                .add("freeSeats=" + seats.stream().filter(seatEntity -> seatEntity.isSeatFree()).collect(Collectors.toList()))
                 .toString();
     }
 }

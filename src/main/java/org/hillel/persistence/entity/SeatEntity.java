@@ -17,11 +17,11 @@ import java.util.StringJoiner;
 @DynamicUpdate
 public class SeatEntity extends AbstractModifyEntity<Long> {
 
-    @ManyToOne(cascade ={CascadeType.PERSIST})
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "journey_id")
     private JourneyEntity journey;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST})
+    @ManyToOne()
     @JoinColumn(name = "vehicle_id")
     private VehicleEntity vehicle;
 
@@ -29,10 +29,10 @@ public class SeatEntity extends AbstractModifyEntity<Long> {
     @Type(type = "yes_no")
     private boolean seatFree = true;
 
-    @Column(name= "carriage_number")
+    @Column(name = "carriage_number")
     private String carriageNumber;
 
-    @Column(name="seat_number")
+    @Column(name = "seat_number")
     private String seatNumber;
 
     @Override

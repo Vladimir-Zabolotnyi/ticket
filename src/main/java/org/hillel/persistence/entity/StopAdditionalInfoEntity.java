@@ -14,26 +14,26 @@ import java.util.StringJoiner;
 @Entity
 @Table(name = "stop_additional_info")
 @DynamicUpdate
-public class StopAdditionalInfoEntity  {
+public class StopAdditionalInfoEntity {
     @Id
     @GeneratedValue
     private Long id;
 
-    @Column(name = "longitude",nullable = false)
-    private double longitude;
+    @Column(name = "longitude", nullable = false)
+    private Double longitude;
 
-    @Column(name = "latitude",nullable = false)
-    private double latitude;
+    @Column(name = "latitude", nullable = false)
+    private Double latitude;
 
     @Column(name = "city")
     private String city;
 
     @Column(name = "year_of_built")
-    private int yearOfBuilt;
+    private Integer yearOfBuilt;
 
     @OneToOne
     @MapsId
-    @JoinColumn(name="stop_id")
+    @JoinColumn(name = "stop_id")
     private StopEntity stop;
 
     @Override
