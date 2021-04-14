@@ -125,4 +125,17 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
     public void removeSeatById(Long seatId) {
         seatService.removeById(seatId);
     }
+
+
+    public  Collection<VehicleEntity> findVehicleByIds(Long ... ids){
+        return vehicleService.findByIds(ids);
+    }
+
+    public  Optional<VehicleEntity> findVehicleById(Long id){
+        return vehicleService.findById(id,true);
+    }
+
+    public Collection<VehicleEntity> findAllVehicles(){
+        return vehicleService.findAll();
+    }
 }

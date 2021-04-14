@@ -1,6 +1,7 @@
 package org.hillel.persistence.repository;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Collection;
 import java.util.Optional;
 
 public interface GenericRepository<E, ID> {
@@ -12,4 +13,8 @@ public interface GenericRepository<E, ID> {
     void removeById(ID id) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException;
 
     void remove(E entity);
+
+    Collection<E> findByIds(ID... ids);
+
+    Collection<E> findAll();
 }

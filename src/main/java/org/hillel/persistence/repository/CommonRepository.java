@@ -1,12 +1,14 @@
 package org.hillel.persistence.repository;
 
+import org.hibernate.Session;
 import org.hillel.persistence.entity.AbstractModifyEntity;
 import org.springframework.util.Assert;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.io.Serializable;
-import java.lang.reflect.InvocationTargetException;
+import java.util.Collection;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -14,6 +16,7 @@ public abstract class CommonRepository<E extends AbstractModifyEntity<ID>, ID ex
 
     @PersistenceContext
     protected EntityManager entityManager;
+
     private final Class<E> entityClass;
 
     protected CommonRepository(Class<E> entityClass) {
@@ -50,4 +53,16 @@ public abstract class CommonRepository<E extends AbstractModifyEntity<ID>, ID ex
             removeById(entity.getId());
         }
     }
+
+    @Override
+    public Collection<E> findByIds(ID... ids) {
+    return entityManager.unwrap(Session.class).byMultipleIds(entityClass).multiLoad(ids);
+    }
+
+    @Override
+    public Collection<E> findAll() {
+//        return entityManager.createQuery("from " + entityClass.getSimpleName()).getResultList();
+        return null;
+    }
+
 }

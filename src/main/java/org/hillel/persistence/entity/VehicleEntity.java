@@ -3,7 +3,6 @@ package org.hillel.persistence.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.action.internal.CollectionUpdateAction;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.util.CollectionUtils;
@@ -53,16 +52,18 @@ public class VehicleEntity extends AbstractModifyEntity<Long> {
         journey.addVehicle(this);
     }
 
-    @Override
-    public String toString() {
-        return new StringJoiner(", ", VehicleEntity.class.getSimpleName() + "[", "]")
-                .add("name='" + name + "'")
-                .toString();
-    }
-
     public void removeAllJourney() {
         if ((CollectionUtils.isEmpty(journeys))) return;
         journeys.forEach(item -> item.setVehicle((null)));
 
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", VehicleEntity.class.getSimpleName() + "[", "]")
+                .add("name='" + name + "'")
+                .add("yearOfBuilt=" + yearOfBuilt)
+                .add("countryOfBuilt='" + countryOfBuilt + "'")
+                .toString();
     }
 }
