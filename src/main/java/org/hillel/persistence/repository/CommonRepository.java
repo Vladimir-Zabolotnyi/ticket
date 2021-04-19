@@ -3,7 +3,6 @@ package org.hillel.persistence.repository;
 
 import org.hibernate.Session;
 import org.hillel.persistence.entity.AbstractModifyEntity;
-import org.hillel.persistence.entity.VehicleEntity;
 import org.springframework.util.Assert;
 
 import javax.persistence.EntityManager;

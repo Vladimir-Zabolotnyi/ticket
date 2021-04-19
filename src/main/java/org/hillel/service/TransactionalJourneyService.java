@@ -1,16 +1,14 @@
 package org.hillel.service;
 
-import org.hillel.Journey;
 import org.hillel.persistence.entity.JourneyEntity;
-import org.hillel.persistence.entity.SeatEntity;
-import org.hillel.persistence.entity.VehicleEntity;
 import org.hillel.persistence.repository.JourneyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Collection;
+import java.util.Objects;
+import java.util.Optional;
 
 @Service(value = "transactionalJourneyService")
 public class TransactionalJourneyService {
@@ -56,23 +54,46 @@ public class TransactionalJourneyService {
         Collection<JourneyEntity> allJourneys = journeyRepository.findAll();
         for (JourneyEntity journeyEntity : allJourneys) {
             journeyEntity.getStopsTime().size();
+            journeyEntity.getVehicle().getName();
+            journeyEntity.getSeats().size();
+
         }
         return allJourneys;
     }
 
     @Transactional(readOnly = true)
     public Collection<JourneyEntity> findAllAsNative(){
-        return journeyRepository.findAllAsNative();
+        Collection<JourneyEntity> allJourneys = journeyRepository.findAllAsNative();
+        for (JourneyEntity journeyEntity : allJourneys) {
+            journeyEntity.getStopsTime().size();
+            journeyEntity.getVehicle().getName();
+            journeyEntity.getSeats().size();
+        }
+        return allJourneys;
     }
 
     @Transactional(readOnly = true)
     public Collection<JourneyEntity> findAllAsNamed(){
-        return journeyRepository.findAllAsNamed();
+        Collection<JourneyEntity> allJourneys = journeyRepository.findAllAsNamed();
+        for (JourneyEntity journeyEntity : allJourneys) {
+            journeyEntity.getStopsTime().size();
+            journeyEntity.getVehicle().getName();
+            journeyEntity.getSeats().size();
+        }
+        return allJourneys;
     }
+
     @Transactional(readOnly = true)
     public Collection<JourneyEntity> findAllAsCriteria(){
-        return journeyRepository.findAllAsCriteria();
+        Collection<JourneyEntity> allJourneys = journeyRepository.findAllAsCriteria();
+        for (JourneyEntity journeyEntity : allJourneys) {
+            journeyEntity.getStopsTime().size();
+            journeyEntity.getVehicle().getName();
+            journeyEntity.getSeats().size();
+        }
+        return allJourneys;
     }
+
     @Transactional(readOnly = true)
     public Collection<JourneyEntity> findAllAsStoredProcedure(){
         return journeyRepository.findAllAsStoredProcedure();

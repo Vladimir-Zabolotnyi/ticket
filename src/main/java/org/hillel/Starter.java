@@ -27,9 +27,9 @@ public class Starter {
 //        System.out.println( ticketClient.findAllAsNamedVehicles());
 //        System.out.println( ticketClient.findAllAsNamedStops());
 //        System.out.println( ticketClient.findAllAsCriteriaStopsTime());
-        System.out.println( ticketClient.findAllJourneys());
+        System.out.println( ticketClient.findAllAsCriteriaJourneys());
 
-
+//
 //        VehicleEntity vehicle1 = buildVehicle("bus1", 1987, "Germany");
 //        vehicle1 = ticketClient.createOrUpdateVehicle(vehicle1);
 //
@@ -41,13 +41,13 @@ public class Starter {
 //        System.out.println(ticketClient.findVehicleByIds(1L,2L,3L,4L,5L,6L));
 
 
-//        SeatEntity seat = buildSeat(vehicle1,true,"1","2");
+//        SeatEntity seat = buildSeat(vehicle1,false,"12","22");
 //        ticketClient.createOrUpdateSeat(seat);
-////
+//
 //        JourneyEntity journey1 = buildJourney("Kiev", "Lvov", Instant.now(), Instant.now().plusMillis(100000000L));
 //        journey1.addVehicle(vehicle1);
 //        journey1=ticketClient.createOrUpdateJourney(journey1);
-////
+//
 //        journey1.addSeat(seat);
 //
 //        ticketClient.createOrUpdateJourney(journey1);

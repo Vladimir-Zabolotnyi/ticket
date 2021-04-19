@@ -44,7 +44,7 @@ public class SeatEntity extends AbstractModifyEntity<Long> {
     @Override
     public String toString() {
         return new StringJoiner(", ", SeatEntity.class.getSimpleName() + "[", "]")
-                .add("seatFree=" + seatFree)
+                .add("seatFree=" + seatFree)  //Show only free-true(look in JourneyEntity)
                 .add("carriageNumber='" + carriageNumber + "'")
                 .add("seatNumber='" + seatNumber + "'")
                 .toString();
