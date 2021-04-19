@@ -10,6 +10,8 @@ public interface GenericRepository<E, ID> {
 
     Optional<E> findById(ID id);
 
+    Collection<E> findByName(String name);
+
     void removeById(ID id) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException;
 
     void remove(E entity);
@@ -17,4 +19,6 @@ public interface GenericRepository<E, ID> {
     Collection<E> findByIds(ID... ids);
 
     Collection<E> findAll();
+
+    Collection<E> findAllAsNative();
 }

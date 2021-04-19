@@ -28,7 +28,9 @@ public class Starter {
         vehicle2 = ticketClient.createOrUpdateVehicle(vehicle2);
         VehicleEntity vehicle3 = buildVehicle("bus134", 1987, "Germany");
         vehicle3 = ticketClient.createOrUpdateVehicle(vehicle3);
-       ticketClient.findAllVehicles();
+        System.out.println( ticketClient.findAllVehiclesByName("bus1"));
+
+
 //        System.out.println(ticketClient.findVehicleById(1L));
 //        System.out.println(ticketClient.findVehicleByIds(1L,2L,3L,4L,5L,6L));
 

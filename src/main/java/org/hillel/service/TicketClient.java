@@ -138,4 +138,80 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
     public Collection<VehicleEntity> findAllVehicles(){
         return vehicleService.findAll();
     }
+    public Collection<JourneyEntity> findAllJourneys(){
+        return journeyService.findAll();
+
+    }public Collection<SeatEntity> findAllSeats(){
+        return seatService.findAll();
+
+    }public Collection<StopEntity> findAllStops(){
+        return stopService.findAll();
+
+    }public Collection<StopTimeEntity> findAllStopsTime(){
+        return stopTimeService.findAll();
+    }
+
+    public Collection<VehicleEntity> findAllAsNativeVehicles(){
+        return vehicleService.findAllAsNative();
+    }
+    public Collection<JourneyEntity> findAllAsNativeJourneys(){
+        return journeyService.findAllAsNamed();
+
+    }public Collection<SeatEntity> findAllAsNativeSeats(){
+        return seatService.findAllAsNative();
+
+    }public Collection<StopEntity> findAllAsNativeStops(){
+        return stopService.findAllAsNative();
+
+    }public Collection<StopTimeEntity> findAllAsNativeStopsTime(){
+        return stopTimeService.findAllAsNative();
+    }
+
+    public Collection<VehicleEntity> findAllAsNamedVehicles(){
+        return vehicleService.findAllAsNamed();
+    }
+    public Collection<JourneyEntity> findAllAsNamedJourneys(){
+        return journeyService.findAllAsNamed();
+
+    }public Collection<SeatEntity> findAllAsNamedSeats(){
+        return seatService.findAllAsNamed();
+
+    }public Collection<StopEntity> findAllAsNamedStops(){
+        return stopService.findAllAsNamed();
+
+    }public Collection<StopTimeEntity> findAllAsNamedStopsTime(){
+        return stopTimeService.findAllAsNamed();
+    }
+
+    public Collection<VehicleEntity> findAllAsCriteriaVehicles(){
+        return vehicleService.findAllAsCriteria();
+    }
+    public Collection<JourneyEntity> findAllAsCriteriaJourneys(){
+        return journeyService.findAllAsCriteria();
+
+    }public Collection<SeatEntity> findAllAsCriteriaSeats(){
+        return seatService.findAllAsCriteria();
+
+    }public Collection<StopEntity> findAllAsCriteriaStops(){
+        return stopService.findAllAsCriteria();
+
+    }public Collection<StopTimeEntity> findAllAsCriteriaStopsTime(){
+        return stopTimeService.findAllAsCriteria();
+    }
+
+    public Collection<VehicleEntity> findAllAsStoredProcedureVehicles(){
+        return vehicleService.findAllAsStoredProcedure();
+    }
+    public Collection<JourneyEntity> findAllAsStoredProcedureJourneys(){
+        return journeyService.findAllAsStoredProcedure();
+
+    }public Collection<SeatEntity> findAllAsStoredProcedureSeats(){
+        return seatService.findAllAsStoredProcedure();
+
+    }public Collection<StopEntity> findAllAsStoredProcedureStops(){
+        return stopService.findAllAsStoredProcedure();
+
+    }public Collection<StopTimeEntity> findAllAsStoredProcedureStopsTime(){
+        return stopTimeService.findAllAsStoredProcedure();
+    }
 }

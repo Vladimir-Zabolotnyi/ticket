@@ -45,8 +45,27 @@ public class TransactionalVehicleService {
     public Optional<VehicleEntity> findById(Long id, boolean withDependencies) {
         return vehicleRepository.findById(id);
     }
+
     @Transactional(readOnly = true)
-    public Collection<VehicleEntity> findAll(){
+    public  Collection<VehicleEntity> findAll(){
         return vehicleRepository.findAll();
+    }
+
+    @Transactional(readOnly = true)
+    public Collection<VehicleEntity> findAllAsNative(){
+        return vehicleRepository.findAllAsNative();
+    }
+
+    @Transactional(readOnly = true)
+    public Collection<VehicleEntity> findAllAsNamed(){
+        return vehicleRepository.findAllAsNamed();
+    }
+    @Transactional(readOnly = true)
+    public Collection<VehicleEntity> findAllAsCriteria(){
+        return vehicleRepository.findAllAsCriteria();
+    }
+    @Transactional(readOnly = true)
+    public Collection<VehicleEntity> findAllAsStoredProcedure(){
+        return vehicleRepository.findAllAsStoredProcedure();
     }
 }

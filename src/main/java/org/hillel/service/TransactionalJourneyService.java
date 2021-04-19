@@ -2,11 +2,14 @@ package org.hillel.service;
 
 import org.hillel.Journey;
 import org.hillel.persistence.entity.JourneyEntity;
+import org.hillel.persistence.entity.SeatEntity;
+import org.hillel.persistence.entity.VehicleEntity;
 import org.hillel.persistence.repository.JourneyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -46,5 +49,28 @@ public class TransactionalJourneyService {
     public void removeById(Long journeyId) {
         if (Objects.isNull(journeyId)) throw new IllegalArgumentException("journeyId is null");
         journeyRepository.removeById(journeyId);
+    }
+
+    @Transactional(readOnly = true)
+    public Collection<JourneyEntity> findAll(){
+        return journeyRepository.findAll();
+    }
+
+    @Transactional(readOnly = true)
+    public Collection<JourneyEntity> findAllAsNative(){
+        return journeyRepository.findAllAsNative();
+    }
+
+    @Transactional(readOnly = true)
+    public Collection<JourneyEntity> findAllAsNamed(){
+        return journeyRepository.findAllAsNamed();
+    }
+    @Transactional(readOnly = true)
+    public Collection<JourneyEntity> findAllAsCriteria(){
+        return journeyRepository.findAllAsCriteria();
+    }
+    @Transactional(readOnly = true)
+    public Collection<JourneyEntity> findAllAsStoredProcedure(){
+        return journeyRepository.findAllAsStoredProcedure();
     }
 }

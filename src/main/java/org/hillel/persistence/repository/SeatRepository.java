@@ -19,4 +19,5 @@ public class SeatRepository extends CommonRepository<SeatEntity, Long> {
         super(SeatEntity.class);
     }
 
+
 }

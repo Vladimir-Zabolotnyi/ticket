@@ -1,11 +1,9 @@
 package org.hillel.persistence.repository;
 
-import org.hillel.persistence.entity.JourneyEntity;
-import org.hillel.persistence.entity.StopEntity;
+import org.hillel.persistence.entity.VehicleEntity;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+
 import java.util.Collection;
 import java.util.Objects;
 
@@ -25,8 +23,9 @@ public class VehicleRepository extends CommonRepository<VehicleEntity, Long> {
         super.remove(entity);
     }
 
-    @Override
-    public Collection<VehicleEntity> findAll() {
-      return null;
-    }
+//    @Override
+//    public Collection<VehicleEntity> findAll() {
+//        return entityManager.createNamedQuery("findAll", VehicleEntity.class).getResultList();
+//        return entityManager.createNamedStoredProcedureQuery("findAllVehicles").getResultList();
+//    }
 }

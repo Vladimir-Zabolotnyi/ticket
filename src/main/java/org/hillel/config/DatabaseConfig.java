@@ -52,9 +52,10 @@ public class DatabaseConfig {
         entityManagerFactory.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         Properties properties = new Properties();
         properties.put("hibernate.dialect", PostgreSQL10Dialect.class.getName());
-        properties.put("hibernate.hbm2ddl.auto", "create");
+        properties.put("hibernate.hbm2ddl.auto", "none");
         properties.put("hibernate.show_sql", "true");
-        properties.put("javax.persistence.query.timeout", TimeUnit.MINUTES.toMillis(5L));
+        TimeUnit.MINUTES.toMillis(5L);
+        properties.put("javax.persistence.query.timeout", 1000*60*5);/*TimeUnit.MINUTES.toMillis(5L);IllegalArgumentException*/
         entityManagerFactory.setJpaProperties(properties);
         return entityManagerFactory;
     }

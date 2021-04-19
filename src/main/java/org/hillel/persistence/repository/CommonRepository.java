@@ -1,12 +1,17 @@
 package org.hillel.persistence.repository;
 
+
 import org.hibernate.Session;
 import org.hillel.persistence.entity.AbstractModifyEntity;
 import org.springframework.util.Assert;
 
-
 import javax.persistence.EntityManager;
+
 import javax.persistence.PersistenceContext;
+import javax.persistence.Table;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Objects;
@@ -36,13 +41,23 @@ public abstract class CommonRepository<E extends AbstractModifyEntity<ID>, ID ex
 
     @Override
     public Optional<E> findById(ID id) {
-        if(Objects.isNull(id)) return Optional.empty();
-        return Optional.ofNullable(entityManager.find(entityClass,id));
+        if (Objects.isNull(id)) return Optional.empty();
+        return Optional.ofNullable(entityManager.find(entityClass, id));
+    }
+
+    @Override
+    public Collection<E> findByName(String name) {
+        final CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        final CriteriaQuery<E> query = criteriaBuilder.createQuery(entityClass);
+        final Root<E> from = query.from(entityClass);
+        return entityManager.createQuery(query.
+                select(from).
+                where(criteriaBuilder.equal(from.get("name"), criteriaBuilder.literal(name)))).getResultList();
     }
 
     @Override
     public void removeById(ID id) {
-        entityManager.remove(entityManager.getReference(entityClass,id));
+        entityManager.remove(entityManager.getReference(entityClass, id));
     }
 
     @Override
@@ -56,13 +71,27 @@ public abstract class CommonRepository<E extends AbstractModifyEntity<ID>, ID ex
 
     @Override
     public Collection<E> findByIds(ID... ids) {
-    return entityManager.unwrap(Session.class).byMultipleIds(entityClass).multiLoad(ids);
+        return entityManager.unwrap(Session.class).byMultipleIds(entityClass).multiLoad(ids);
     }
 
     @Override
     public Collection<E> findAll() {
-//        return entityManager.createQuery("from " + entityClass.getSimpleName()).getResultList();
-        return null;
+        return entityManager.createQuery("from " + entityClass.getSimpleName()).getResultList();
+
+        //        final CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+//        final CriteriaQuery<E> query = criteriaBuilder.createQuery(entityClass);
+//        final Root<E> from = query.from(entityClass);
+//        return entityManager.createQuery(query.select(from)).getResultList();
+
+//        return  entityManager.createStoredProcedureQuery("find_all", entityClass).
+//                registerStoredProcedureParameter(1,Class.class, ParameterMode.REF_CURSOR).
+//                registerStoredProcedureParameter(2,String.class,ParameterMode.IN).
+//                setParameter(2,entityClass.getAnnotation(Table.class).name()).
+//                getResultList();
     }
 
+    @Override
+    public Collection<E> findAllAsNative() {
+        return entityManager.createNativeQuery("select  * from " + entityClass.getAnnotation(Table.class).name(), entityClass).getResultList();
+    }
 }
