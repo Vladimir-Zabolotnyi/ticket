@@ -22,7 +22,7 @@ import java.util.*;
 @DynamicInsert
 
 @NamedQueries(value = {
-        @NamedQuery(name = "findAll", query = "from VehicleEntity")
+        @NamedQuery(name = "findAllAsNamedVehicleEntity", query = "from VehicleEntity")
 })
 @NamedStoredProcedureQueries({
         @NamedStoredProcedureQuery(

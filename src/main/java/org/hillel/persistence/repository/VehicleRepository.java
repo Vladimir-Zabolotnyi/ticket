@@ -4,7 +4,6 @@ import org.hillel.persistence.entity.VehicleEntity;
 import org.springframework.stereotype.Repository;
 
 
-import java.util.Collection;
 import java.util.Objects;
 
 @Repository

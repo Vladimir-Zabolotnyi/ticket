@@ -54,7 +54,6 @@ public class DatabaseConfig {
         properties.put("hibernate.dialect", PostgreSQL10Dialect.class.getName());
         properties.put("hibernate.hbm2ddl.auto", "none");
         properties.put("hibernate.show_sql", "true");
-        TimeUnit.MINUTES.toMillis(5L);
         properties.put("javax.persistence.query.timeout", 1000*60*5);/*TimeUnit.MINUTES.toMillis(5L);IllegalArgumentException*/
         entityManagerFactory.setJpaProperties(properties);
         return entityManagerFactory;

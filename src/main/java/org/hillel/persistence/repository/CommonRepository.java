@@ -3,6 +3,7 @@ package org.hillel.persistence.repository;
 
 import org.hibernate.Session;
 import org.hillel.persistence.entity.AbstractModifyEntity;
+import org.hillel.persistence.entity.VehicleEntity;
 import org.springframework.util.Assert;
 
 import javax.persistence.EntityManager;
@@ -93,5 +94,23 @@ public abstract class CommonRepository<E extends AbstractModifyEntity<ID>, ID ex
     @Override
     public Collection<E> findAllAsNative() {
         return entityManager.createNativeQuery("select  * from " + entityClass.getAnnotation(Table.class).name(), entityClass).getResultList();
+    }
+
+    @Override
+    public Collection<E> findAllAsCriteria(){
+        final CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        final CriteriaQuery<E> query = criteriaBuilder.createQuery(entityClass);
+        final Root<E> from = query.from(entityClass);
+        return entityManager.createQuery(query.select(from)).getResultList();
+    }
+
+    @Override
+    public  Collection<E> findAllAsNamed(){
+        return entityManager.createNamedQuery("findAllAsNamed" + entityClass.getSimpleName(),entityClass).getResultList();
+    }
+
+    @Override
+    public  Collection<E> findAllAsStoredProcedure(){
+        return null;
     }
 }

@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
 
 import javax.persistence.*;
 import java.time.Instant;
@@ -15,6 +17,10 @@ import java.util.StringJoiner;
 @Entity
 @Table(name = "stop_time")
 @DynamicUpdate
+
+@NamedQueries(value = {
+        @NamedQuery(name = "findAllAsNamedStopTimeEntity", query = "from StopTimeEntity")
+})
 public class StopTimeEntity extends AbstractModifyEntity<Long> {
 
     @ManyToOne(cascade = {CascadeType.PERSIST})

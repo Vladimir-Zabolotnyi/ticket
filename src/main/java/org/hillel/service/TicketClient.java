@@ -138,6 +138,7 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
     public Collection<VehicleEntity> findAllVehicles(){
         return vehicleService.findAll();
     }
+
     public Collection<JourneyEntity> findAllJourneys(){
         return journeyService.findAll();
 
@@ -150,6 +151,9 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
     }public Collection<StopTimeEntity> findAllStopsTime(){
         return stopTimeService.findAll();
     }
+
+
+
 
     public Collection<VehicleEntity> findAllAsNativeVehicles(){
         return vehicleService.findAllAsNative();
@@ -167,6 +171,9 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
         return stopTimeService.findAllAsNative();
     }
 
+
+
+
     public Collection<VehicleEntity> findAllAsNamedVehicles(){
         return vehicleService.findAllAsNamed();
     }
@@ -183,6 +190,9 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
         return stopTimeService.findAllAsNamed();
     }
 
+
+
+
     public Collection<VehicleEntity> findAllAsCriteriaVehicles(){
         return vehicleService.findAllAsCriteria();
     }
@@ -198,6 +208,8 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
     }public Collection<StopTimeEntity> findAllAsCriteriaStopsTime(){
         return stopTimeService.findAllAsCriteria();
     }
+
+
 
     public Collection<VehicleEntity> findAllAsStoredProcedureVehicles(){
         return vehicleService.findAllAsStoredProcedure();

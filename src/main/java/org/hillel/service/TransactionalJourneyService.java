@@ -9,9 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collection;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service(value = "transactionalJourneyService")
 public class TransactionalJourneyService {
@@ -53,7 +52,12 @@ public class TransactionalJourneyService {
 
     @Transactional(readOnly = true)
     public Collection<JourneyEntity> findAll(){
-        return journeyRepository.findAll();
+
+        Collection<JourneyEntity> allJourneys = journeyRepository.findAll();
+        for (JourneyEntity journeyEntity : allJourneys) {
+            journeyEntity.getStopsTime().size();
+        }
+        return allJourneys;
     }
 
     @Transactional(readOnly = true)
