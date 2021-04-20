@@ -24,14 +24,14 @@ import java.util.*;
 @NamedQueries(value = {
         @NamedQuery(name = "findAllAsNamedVehicleEntity", query = "from VehicleEntity")
 })
-@NamedStoredProcedureQueries({
-        @NamedStoredProcedureQuery(
-                name = "findAllVehicles",
-                procedureName = "find_all_vehicles",
-                parameters = @StoredProcedureParameter(mode = ParameterMode.REF_CURSOR, type = Class.class),
-                resultClasses = VehicleEntity.class
-        )
-})
+//@NamedStoredProcedureQueries({
+//        @NamedStoredProcedureQuery(
+//                name = "findAllVehicles",
+//                procedureName = "find_all_vehicles",
+//                parameters = @StoredProcedureParameter(mode = ParameterMode.REF_CURSOR, type = Class.class),
+//                resultClasses = VehicleEntity.class
+//        )
+//})
 public class VehicleEntity extends AbstractModifyEntity<Long> {
 
     @Column(name = "name", length = 30, nullable = false)

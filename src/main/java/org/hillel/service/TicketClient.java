@@ -7,7 +7,9 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import java.util.*;
+import java.util.Collection;
+import java.util.Objects;
+import java.util.Optional;
 
 @Component
 public class TicketClient  /* implements DisposableBean implements InitializingBean */ {
@@ -126,6 +128,15 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
         seatService.removeById(seatId);
     }
 
+    public Collection<VehicleEntity> findAllVehiclesByName(String name) {
+        return vehicleService.findAllByName(name);
+    }
+
+    public Collection<StopEntity> findAllStopsByName(String name){
+        return  stopService.findAllByName(name);
+    }
+
+
 
     public  Collection<VehicleEntity> findVehicleByIds(Long ... ids){
         return vehicleService.findByIds(ids);
@@ -159,7 +170,7 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
         return vehicleService.findAllAsNative();
     }
     public Collection<JourneyEntity> findAllAsNativeJourneys(){
-        return journeyService.findAllAsNamed();
+        return journeyService.findAllAsNative();
 
     }public Collection<SeatEntity> findAllAsNativeSeats(){
         return seatService.findAllAsNative();

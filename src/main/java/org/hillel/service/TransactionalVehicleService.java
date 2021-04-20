@@ -37,6 +37,11 @@ public class TransactionalVehicleService {
     }
 
     @Transactional(readOnly = true)
+    public Collection<VehicleEntity> findAllByName(String name){
+        return  vehicleRepository.findAllByName(name);
+    }
+
+    @Transactional(readOnly = true)
     public Collection<VehicleEntity> findByIds(Long... ids) {
         return vehicleRepository.findByIds(ids);
     }

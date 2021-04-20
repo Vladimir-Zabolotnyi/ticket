@@ -22,9 +22,4 @@ public class VehicleRepository extends CommonRepository<VehicleEntity, Long> {
         super.remove(entity);
     }
 
-//    @Override
-//    public Collection<VehicleEntity> findAll() {
-//        return entityManager.createNamedQuery("findAll", VehicleEntity.class).getResultList();
-//        return entityManager.createNamedStoredProcedureQuery("findAllVehicles").getResultList();
-//    }
 }

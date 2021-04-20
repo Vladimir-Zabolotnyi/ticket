@@ -27,7 +27,8 @@ public class Starter {
 //        System.out.println( ticketClient.findAllAsNamedVehicles());
 //        System.out.println( ticketClient.findAllAsNamedStops());
 //        System.out.println( ticketClient.findAllAsCriteriaStopsTime());
-        System.out.println( ticketClient.findAllAsCriteriaJourneys());
+//        System.out.println( ticketClient.findAllAsStoredProcedureJourneys());
+        System.out.println(ticketClient.findAllVehiclesByName("bus12"));
 
 //
 //        VehicleEntity vehicle1 = buildVehicle("bus1", 1987, "Germany");

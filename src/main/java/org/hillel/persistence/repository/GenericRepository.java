@@ -10,7 +10,7 @@ public interface GenericRepository<E, ID> {
 
     Optional<E> findById(ID id);
 
-    Collection<E> findByName(String name);
+    Collection<E> findAllByName(String name);
 
     void removeById(ID id) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException;
 

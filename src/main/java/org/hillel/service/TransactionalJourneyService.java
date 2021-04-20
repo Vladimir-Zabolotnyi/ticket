@@ -96,6 +96,12 @@ public class TransactionalJourneyService {
 
     @Transactional(readOnly = true)
     public Collection<JourneyEntity> findAllAsStoredProcedure(){
-        return journeyRepository.findAllAsStoredProcedure();
+        Collection<JourneyEntity> allJourneys= journeyRepository.findAllAsStoredProcedure();
+        for (JourneyEntity journeyEntity : allJourneys) {
+            journeyEntity.getStopsTime().size();
+            journeyEntity.getVehicle().getName();
+            journeyEntity.getSeats().size();
+        }
+        return allJourneys;
     }
 }
