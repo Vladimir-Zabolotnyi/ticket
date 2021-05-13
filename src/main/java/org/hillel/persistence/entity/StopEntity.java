@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -19,6 +21,10 @@ import java.util.StringJoiner;
 @Table(name = "stop")
 @DynamicUpdate
 @DynamicInsert
+
+@NamedQueries(value = {
+        @NamedQuery(name = "findAllAsNamedStopEntity", query = "from StopEntity")
+})
 public class StopEntity extends AbstractModifyEntity<Long> {
 
     @Embedded

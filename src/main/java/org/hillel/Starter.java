@@ -11,8 +11,7 @@ import org.springframework.util.StringUtils;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.Objects;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
+
 
 public class Starter {
     public static void main(String[] args) throws IOException, IllegalAccessException, InstantiationException, ClassNotFoundException {
@@ -22,30 +21,48 @@ public class Starter {
         final ApplicationContext applicationContext = new AnnotationConfigApplicationContext(RootConfig.class);
         final TicketClient ticketClient = applicationContext.getBean(TicketClient.class);
 
-        VehicleEntity vehicle1 = buildVehicle("bus1", 1987, "Germany");
-        vehicle1 = ticketClient.createOrUpdateVehicle(vehicle1);
+//        System.out.println(ticketClient.findJourneyById(1L,true));
+//
+//        System.out.println( ticketClient.findAllAsNamedSeats());
+//        System.out.println( ticketClient.findAllAsNamedVehicles());
+//        System.out.println( ticketClient.findAllAsNamedStops());
+//        System.out.println( ticketClient.findAllAsCriteriaStopsTime());
+//        System.out.println( ticketClient.findAllAsStoredProcedureJourneys());
+        System.out.println(ticketClient.findAllVehiclesByName("bus12"));
 
-        SeatEntity seat = buildSeat(vehicle1,true,"1","2");
-        ticketClient.createOrUpdateSeat(seat);
+//
+//        VehicleEntity vehicle1 = buildVehicle("bus1", 1987, "Germany");
+//        vehicle1 = ticketClient.createOrUpdateVehicle(vehicle1);
+//
+//        VehicleEntity vehicle2 = buildVehicle("bus12", 1987, "Germany");
+//        vehicle2 = ticketClient.createOrUpdateVehicle(vehicle2);
+//        VehicleEntity vehicle3 = buildVehicle("bus134", 1987, "Germany");
+//        vehicle3 = ticketClient.createOrUpdateVehicle(vehicle3);
+//        System.out.println(ticketClient.findVehicleById(1L));
+//        System.out.println(ticketClient.findVehicleByIds(1L,2L,3L,4L,5L,6L));
 
-        JourneyEntity journey1 = buildJourney("Kiev", "Lvov", Instant.now(), Instant.now().plusMillis(100000000L));
-        journey1.addVehicle(vehicle1);
-        journey1=ticketClient.createOrUpdateJourney(journey1);
 
-        journey1.addSeat(seat);
+//        SeatEntity seat = buildSeat(vehicle1,false,"12","22");
+//        ticketClient.createOrUpdateSeat(seat);
+//
+//        JourneyEntity journey1 = buildJourney("Kiev", "Lvov", Instant.now(), Instant.now().plusMillis(100000000L));
+//        journey1.addVehicle(vehicle1);
+//        journey1=ticketClient.createOrUpdateJourney(journey1);
+//
+//        journey1.addSeat(seat);
+//
+//        ticketClient.createOrUpdateJourney(journey1);
+//
+//        StopEntity stop1=buildStop(1D,2D,"s",1923,"dsd","dsd");
+//        ticketClient.createOrUpdateStop(stop1);
+//
+//        StopTimeEntity stopTimeEntity=builtStopTime(stop1,Instant.now(), Instant.now().plusMillis(100000000L),1);
+//        ticketClient.createOrUpdateStopTime(stopTimeEntity);
+//
+//        journey1.addStopTime(stopTimeEntity);
+//        ticketClient.createOrUpdateJourney(journey1);
 
-        ticketClient.createOrUpdateJourney(journey1);
-
-        StopEntity stop1=buildStop(1D,2D,"s",1923,"dsd","dsd");
-        ticketClient.createOrUpdateStop(stop1);
-
-        StopTimeEntity stopTimeEntity=builtStopTime(stop1,Instant.now(), Instant.now().plusMillis(100000000L),1);
-        ticketClient.createOrUpdateStopTime(stopTimeEntity);
-
-        journey1.addStopTime(stopTimeEntity);
-        ticketClient.createOrUpdateJourney(journey1);
-
-        ticketClient.removeStop(stop1);
+//        ticketClient.removeStop(stop1);
 
 
     }

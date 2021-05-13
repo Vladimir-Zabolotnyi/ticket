@@ -3,10 +3,12 @@ package org.hillel.persistence.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.action.internal.CollectionUpdateAction;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
 import org.springframework.util.CollectionUtils;
+
 
 import javax.persistence.*;
 import java.util.*;
@@ -18,6 +20,18 @@ import java.util.*;
 @Table(name = "vehicle")
 @DynamicUpdate
 @DynamicInsert
+
+@NamedQueries(value = {
+        @NamedQuery(name = "findAllAsNamedVehicleEntity", query = "from VehicleEntity")
+})
+//@NamedStoredProcedureQueries({
+//        @NamedStoredProcedureQuery(
+//                name = "findAllVehicles",
+//                procedureName = "find_all_vehicles",
+//                parameters = @StoredProcedureParameter(mode = ParameterMode.REF_CURSOR, type = Class.class),
+//                resultClasses = VehicleEntity.class
+//        )
+//})
 public class VehicleEntity extends AbstractModifyEntity<Long> {
 
     @Column(name = "name", length = 30, nullable = false)
@@ -53,16 +67,18 @@ public class VehicleEntity extends AbstractModifyEntity<Long> {
         journey.addVehicle(this);
     }
 
-    @Override
-    public String toString() {
-        return new StringJoiner(", ", VehicleEntity.class.getSimpleName() + "[", "]")
-                .add("name='" + name + "'")
-                .toString();
-    }
-
     public void removeAllJourney() {
         if ((CollectionUtils.isEmpty(journeys))) return;
         journeys.forEach(item -> item.setVehicle((null)));
 
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", VehicleEntity.class.getSimpleName() + "[", "]")
+                .add("name='" + name + "'")
+                .add("yearOfBuilt=" + yearOfBuilt)
+                .add("countryOfBuilt='" + countryOfBuilt + "'")
+                .toString();
     }
 }
