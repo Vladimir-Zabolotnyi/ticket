@@ -104,4 +104,15 @@ public class TransactionalJourneyService {
         }
         return allJourneys;
     }
+
+    @Transactional(readOnly = true)
+    public Collection<JourneyEntity> findAllUsingPagingSorting(String orderName,boolean ascOrder,int firstRes,int maxRes){
+        Collection<JourneyEntity> allJourneys = journeyRepository.findAllUsingPagingSorting(orderName,ascOrder,firstRes,maxRes);
+        for (JourneyEntity journeyEntity : allJourneys) {
+            journeyEntity.getStopsTime().size();
+            journeyEntity.getVehicle().getName();
+            journeyEntity.getSeats().size();
+        }
+        return allJourneys;
+    }
 }

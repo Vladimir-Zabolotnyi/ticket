@@ -2,6 +2,7 @@ package org.hillel.persistence.repository;
 
 
 import org.hibernate.Session;
+import org.hibernate.query.criteria.internal.OrderImpl;
 import org.hillel.persistence.entity.AbstractModifyEntity;
 import org.springframework.util.Assert;
 
@@ -45,17 +46,24 @@ public abstract class CommonRepository<E extends AbstractModifyEntity<ID>, ID ex
     }
 
     @Override
-    public Collection<E> findAllByName(String name) {
-        final CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        final CriteriaQuery<E> query = criteriaBuilder.createQuery(entityClass);
-        final Root<E> from = query.from(entityClass);
-        final Join<Object, Object> journeys = from.join("journeys",JoinType.LEFT);
-        final Predicate byName = criteriaBuilder.equal(from.get("name"), criteriaBuilder.literal(name));
-        final Predicate active = criteriaBuilder.equal(from.get("active"), criteriaBuilder.literal(true));
-        final Predicate byJourneyStationFrom = criteriaBuilder.equal(journeys.get("stationFrom"), criteriaBuilder.literal("Kiev"));
-        return entityManager.createQuery(query.select(from).
-                where(byName,active,byJourneyStationFrom)).
-                getResultList();
+    public Collection<E> findByName(String name) {
+
+
+//        return entityManager.createNativeQuery("select e.* from " + entityClass.getAnnotation(Table.class).name() + " e " + "where e.name = ?",entityClass).setParameter(1,name).getResultList();
+
+//        return  entityManager.createQuery("from " + entityClass.getName() + " e where e.name = " + "?1" ,entityClass).setParameter(1,name).getResultList();
+
+        return entityManager.createQuery("from " + entityClass.getName()
+                + " e where e.name = :entity_name and e.active = :activeParam", entityClass)
+                .setParameter("entity_name", name)
+                .setParameter("activeParam", true)
+                .getResultList();
+
+//        return entityManager.createNativeQuery("select e.* from " + entityClass.getAnnotation(Table.class).name() + " e " +
+//                " where e.name = :entity_name and e.active = :activeParam", entityClass)
+//                .setParameter("entity_name", name)
+//                .setParameter("activeParam", "yes")
+//                .getResultList();
     }
 
     @Override
@@ -108,5 +116,18 @@ public abstract class CommonRepository<E extends AbstractModifyEntity<ID>, ID ex
                 registerStoredProcedureParameter(2, String.class, ParameterMode.IN).
                 setParameter(2, entityClass.getAnnotation(Table.class).name()).
                 getResultList();
+    }
+
+   @Override
+    public Collection<E> findAllUsingPagingSorting(String orderName,boolean ascOrder,int firstRes,int maxRes){
+        final CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<E> query = criteriaBuilder.createQuery(entityClass);
+        Root<E> from = query.from(entityClass);
+        return entityManager.createQuery(
+                query.select(from).orderBy(new OrderImpl(from.get(orderName),ascOrder)))
+                .setFirstResult(firstRes)
+                .setMaxResults(maxRes)
+                .getResultList();
+
     }
 }

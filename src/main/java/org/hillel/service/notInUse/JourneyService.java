@@ -1,11 +1,8 @@
-package org.hillel.service;
+package org.hillel.service.notInUse;
 
-import org.hillel.Journey;
 import org.hillel.persistence.entity.JourneyEntity;
 
 import javax.transaction.Transactional;
-import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.Optional;
 
 public interface JourneyService {

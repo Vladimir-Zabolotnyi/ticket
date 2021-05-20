@@ -21,14 +21,18 @@ public class Starter {
         final ApplicationContext applicationContext = new AnnotationConfigApplicationContext(RootConfig.class);
         final TicketClient ticketClient = applicationContext.getBean(TicketClient.class);
 
+        System.out.println(ticketClient.findAllVehicleWithMaxFreeSeats());
+        System.out.println(ticketClient.findAllVehicleWithMinFreeSeats());
+//        System.out.println(ticketClient.findAllSeatsUsingPagingSorting(SeatEntity_.ID,false,0,10));
 //        System.out.println(ticketClient.findJourneyById(1L,true));
+
 //
 //        System.out.println( ticketClient.findAllAsNamedSeats());
 //        System.out.println( ticketClient.findAllAsNamedVehicles());
 //        System.out.println( ticketClient.findAllAsNamedStops());
 //        System.out.println( ticketClient.findAllAsCriteriaStopsTime());
 //        System.out.println( ticketClient.findAllAsStoredProcedureJourneys());
-        System.out.println(ticketClient.findAllVehiclesByName("bus12"));
+//        System.out.println(ticketClient.findAllVehiclesByName("bus12"));
 
 //
 //        VehicleEntity vehicle1 = buildVehicle("bus1", 1987, "Germany");

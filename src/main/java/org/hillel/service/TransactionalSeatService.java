@@ -1,13 +1,9 @@
 package org.hillel.service;
 
-import org.hillel.persistence.entity.JourneyEntity;
 import org.hillel.persistence.entity.SeatEntity;
-import org.hillel.persistence.entity.StopEntity;
-import org.hillel.persistence.entity.VehicleEntity;
 import org.hillel.persistence.repository.SeatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
@@ -57,5 +53,9 @@ public class TransactionalSeatService {
     @Transactional(readOnly = true)
     public Collection<SeatEntity> findAllAsStoredProcedure(){
         return seatRepository.findAllAsStoredProcedure();
+    }
+
+    public Collection<SeatEntity> findAllUsingPagingSorting(String orderName,boolean ascOrder,int firstRes,int maxRes){
+        return seatRepository.findAllUsingPagingSorting(orderName, ascOrder, firstRes, maxRes);
     }
 }

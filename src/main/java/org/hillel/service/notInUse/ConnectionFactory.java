@@ -1,4 +1,4 @@
-package org.hillel.service;
+package org.hillel.service.notInUse;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

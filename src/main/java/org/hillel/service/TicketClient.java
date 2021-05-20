@@ -96,6 +96,7 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
         journeyService.removeById(journeyId);
     }
 
+
     public void removeVehicle(VehicleEntity vehicle) {
         vehicleService.remove(vehicle);
     }
@@ -103,6 +104,7 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
     public void removeVehicleById(Long vehicleId) {
         vehicleService.removeById(vehicleId);
     }
+
 
     public void removeStop(StopEntity stop) {
         stopService.remove(stop);
@@ -112,6 +114,7 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
         stopService.removeByID(stopId);
     }
 
+
     public void removeStopTime(StopTimeEntity stopTime) {
         stopTimeService.remove(stopTime);
     }
@@ -119,6 +122,7 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
     public void removeStopTimeById(Long stopTimeId) {
         stopTimeService.removeById(stopTimeId);
     }
+
 
     public void removeSeat(SeatEntity seatEntity) {
         seatService.remove(seatEntity);
@@ -128,6 +132,8 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
         seatService.removeById(seatId);
     }
 
+
+
     public Collection<VehicleEntity> findAllVehiclesByName(String name) {
         return vehicleService.findAllByName(name);
     }
@@ -135,7 +141,6 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
     public Collection<StopEntity> findAllStopsByName(String name){
         return  stopService.findAllByName(name);
     }
-
 
 
     public  Collection<VehicleEntity> findVehicleByIds(Long ... ids){
@@ -236,5 +241,27 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
 
     }public Collection<StopTimeEntity> findAllAsStoredProcedureStopsTime(){
         return stopTimeService.findAllAsStoredProcedure();
+    }
+
+    public Collection<JourneyEntity> findAllJourneysUsingPagingSorting(String orderName,boolean ascOrder,int firstRes,int maxRes){
+        return journeyService.findAllUsingPagingSorting(orderName,ascOrder,firstRes,maxRes);
+    }
+    public Collection<VehicleEntity> findAllVehiclesUsingPagingSorting(String orderName,boolean ascOrder,int firstRes,int maxRes){
+        return vehicleService.findAllUsingPagingSorting(orderName,ascOrder,firstRes,maxRes);
+    }
+    public Collection<StopTimeEntity> findAllStopTimeUsingPagingSorting(String orderName,boolean ascOrder,int firstRes,int maxRes){
+        return stopTimeService.findAllUsingPagingSorting(orderName,ascOrder,firstRes,maxRes);
+    }
+    public Collection<StopEntity> findAllStopsUsingPagingSorting(String orderName,boolean ascOrder,int firstRes,int maxRes){
+        return stopService.findAllUsingPagingSorting(orderName,ascOrder,firstRes,maxRes);
+    }
+    public Collection<SeatEntity> findAllSeatsUsingPagingSorting(String orderName,boolean ascOrder,int firstRes,int maxRes){
+        return seatService.findAllUsingPagingSorting(orderName,ascOrder,firstRes,maxRes);
+    }
+    public Collection<VehicleEntity> findAllVehicleWithMaxFreeSeats(){
+        return vehicleService.findAllVehicleWithMaxFreeSeats();
+    }
+    public Collection<VehicleEntity> findAllVehicleWithMinFreeSeats(){
+        return vehicleService.findAllVehicleWithMinFreeSeats();
     }
 }

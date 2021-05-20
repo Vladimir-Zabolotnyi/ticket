@@ -34,7 +34,7 @@ public class TransactionalStopService {
 
     @Transactional(readOnly = true)
     public Collection<StopEntity> findAllByName(String name){
-        return  stopRepository.findAllByName(name);
+        return  stopRepository.findByName(name);
     }
 
     @Transactional(readOnly = true)
@@ -57,6 +57,11 @@ public class TransactionalStopService {
     @Transactional(readOnly = true)
     public Collection<StopEntity> findAllAsStoredProcedure(){
         return stopRepository.findAllAsStoredProcedure();
+    }
+
+    @Transactional(readOnly = true)
+    public Collection<StopEntity> findAllUsingPagingSorting(String orderName,boolean ascOrder,int firstRes,int maxRes){
+        return stopRepository.findAllUsingPagingSorting(orderName, ascOrder, firstRes, maxRes);
     }
 }
 

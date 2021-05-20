@@ -76,6 +76,7 @@ public class VehicleEntity extends AbstractModifyEntity<Long> {
     @Override
     public String toString() {
         return new StringJoiner(", ", VehicleEntity.class.getSimpleName() + "[", "]")
+                .add("id='" + getId() + "'")
                 .add("name='" + name + "'")
                 .add("yearOfBuilt=" + yearOfBuilt)
                 .add("countryOfBuilt='" + countryOfBuilt + "'")

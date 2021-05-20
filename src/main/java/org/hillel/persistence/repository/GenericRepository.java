@@ -10,7 +10,7 @@ public interface GenericRepository<E, ID> {
 
     Optional<E> findById(ID id);
 
-    Collection<E> findAllByName(String name);
+    Collection<E> findByName(String name);
 
     void removeById(ID id) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException;
 
@@ -27,4 +27,7 @@ public interface GenericRepository<E, ID> {
     Collection<E> findAllAsNamed();
 
     Collection<E> findAllAsStoredProcedure();
+
+
+    Collection<E> findAllUsingPagingSorting(String orderName, boolean asc, int firstRes, int maxRes);
 }
