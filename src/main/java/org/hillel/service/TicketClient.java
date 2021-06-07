@@ -1,6 +1,7 @@
 package org.hillel.service;
 
 import org.hillel.persistence.entity.*;
+import org.hillel.persistence.jpa.repository.SimpleVehicleDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -138,6 +140,14 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
         return vehicleService.findAllByName(name);
     }
 
+    public List<SimpleVehicleDto> listAllSimpleVehicle(String name){
+        return vehicleService.findAllSimpleVehicles( name);
+    }
+
+  public void disableById(Long id){
+        vehicleService.disableById(id);
+  }
+
     public Collection<StopEntity> findAllStopsByName(String name){
         return  stopService.findAllByName(name);
     }
@@ -171,9 +181,9 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
 
 
 
-    public Collection<VehicleEntity> findAllAsNativeVehicles(){
-        return vehicleService.findAllAsNative();
-    }
+//    public Collection<VehicleEntity> findAllAsNativeVehicles(){
+//        return vehicleService.findAllAsNative();
+//    }
     public Collection<JourneyEntity> findAllAsNativeJourneys(){
         return journeyService.findAllAsNative();
 
@@ -190,9 +200,9 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
 
 
 
-    public Collection<VehicleEntity> findAllAsNamedVehicles(){
-        return vehicleService.findAllAsNamed();
-    }
+//    public Collection<VehicleEntity> findAllAsNamedVehicles(){
+//        return vehicleService.findAllAsNamed();
+//    }
     public Collection<JourneyEntity> findAllAsNamedJourneys(){
         return journeyService.findAllAsNamed();
 
@@ -209,9 +219,9 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
 
 
 
-    public Collection<VehicleEntity> findAllAsCriteriaVehicles(){
-        return vehicleService.findAllAsCriteria();
-    }
+//    public Collection<VehicleEntity> findAllAsCriteriaVehicles(){
+//        return vehicleService.findAllAsCriteria();
+//    }
     public Collection<JourneyEntity> findAllAsCriteriaJourneys(){
         return journeyService.findAllAsCriteria();
 
@@ -227,9 +237,9 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
 
 
 
-    public Collection<VehicleEntity> findAllAsStoredProcedureVehicles(){
-        return vehicleService.findAllAsStoredProcedure();
-    }
+//    public Collection<VehicleEntity> findAllAsStoredProcedureVehicles(){
+//        return vehicleService.findAllAsStoredProcedure();
+//    }
     public Collection<JourneyEntity> findAllAsStoredProcedureJourneys(){
         return journeyService.findAllAsStoredProcedure();
 
@@ -246,9 +256,9 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
     public Collection<JourneyEntity> findAllJourneysUsingPagingSorting(String orderName,boolean ascOrder,int firstRes,int maxRes){
         return journeyService.findAllUsingPagingSorting(orderName,ascOrder,firstRes,maxRes);
     }
-    public Collection<VehicleEntity> findAllVehiclesUsingPagingSorting(String orderName,boolean ascOrder,int firstRes,int maxRes){
-        return vehicleService.findAllUsingPagingSorting(orderName,ascOrder,firstRes,maxRes);
-    }
+//    public Collection<VehicleEntity> findAllVehiclesUsingPagingSorting(String orderName,boolean ascOrder,int firstRes,int maxRes){
+//        return vehicleService.findAllUsingPagingSorting(orderName,ascOrder,firstRes,maxRes);
+//    }
     public Collection<StopTimeEntity> findAllStopTimeUsingPagingSorting(String orderName,boolean ascOrder,int firstRes,int maxRes){
         return stopTimeService.findAllUsingPagingSorting(orderName,ascOrder,firstRes,maxRes);
     }
@@ -258,10 +268,10 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
     public Collection<SeatEntity> findAllSeatsUsingPagingSorting(String orderName,boolean ascOrder,int firstRes,int maxRes){
         return seatService.findAllUsingPagingSorting(orderName,ascOrder,firstRes,maxRes);
     }
-    public Collection<VehicleEntity> findAllVehicleWithMaxFreeSeats(){
-        return vehicleService.findAllVehicleWithMaxFreeSeats();
-    }
-    public Collection<VehicleEntity> findAllVehicleWithMinFreeSeats(){
-        return vehicleService.findAllVehicleWithMinFreeSeats();
-    }
+//    public Collection<VehicleEntity> findAllVehicleWithMaxFreeSeats(){
+//        return vehicleService.findAllVehicleWithMaxFreeSeats();
+//    }
+//    public Collection<VehicleEntity> findAllVehicleWithMinFreeSeats(){
+//        return vehicleService.findAllVehicleWithMinFreeSeats();
+//    }
 }

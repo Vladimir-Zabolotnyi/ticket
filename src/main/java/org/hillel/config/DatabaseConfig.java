@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -24,6 +25,8 @@ import java.util.Properties;
 @Configuration
 @PropertySource("database.properties")
 @EnableTransactionManagement
+@EnableJpaRepositories(basePackages = {"org.hillel.persistence.jpa.repository"},
+        entityManagerFactoryRef = "entityManagerFactory")
 public class DatabaseConfig {
 
     @Autowired
@@ -45,8 +48,8 @@ public class DatabaseConfig {
     }
 
     @Bean
-    public TransactionTemplate transactionTemplate(final PlatformTransactionManager transactionManager){
-        return  new TransactionTemplate(transactionManager);
+    public TransactionTemplate transactionTemplate(final PlatformTransactionManager transactionManager) {
+        return new TransactionTemplate(transactionManager);
     }
 
     @Bean
@@ -59,7 +62,7 @@ public class DatabaseConfig {
         properties.put("hibernate.dialect", PostgreSQL10Dialect.class.getName());
         properties.put("hibernate.hbm2ddl.auto", "none");
         properties.put("hibernate.show_sql", "true");
-        properties.put("javax.persistence.query.timeout", 1000*60*5);/*TimeUnit.MINUTES.toMillis(5L);IllegalArgumentException*/
+        properties.put("javax.persistence.query.timeout", 1000 * 60 * 5);/*TimeUnit.MINUTES.toMillis(5L);IllegalArgumentException*/
         entityManagerFactory.setJpaProperties(properties);
         return entityManagerFactory;
     }

@@ -5,28 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08f91e42-f6b4-4d4a-86f1-8942106e05f0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/jpa/repository/CommonJpaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/jpa/repository/SimpleVehicleDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/jpa/repository/VehicleJpaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/jpa/repository/specification/VehicleSpecification.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/Starter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/Starter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/config/DatabaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/config/DatabaseConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/config/RootConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/config/RootConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/VehicleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/VehicleEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/CommonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/CommonRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/GenericRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/GenericRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/JourneyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/JourneyRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/VehicleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/repository/VehicleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/ConnectionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/notInUse/ConnectionFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/JDBCJourneyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/notInUse/JDBCJourneyServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/JourneyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/notInUse/JourneyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/AbstractModifyEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/persistence/entity/AbstractModifyEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/TicketClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TicketClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalJourneyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalJourneyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalSeatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalSeatService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalStopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalStopService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalStopTimeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalStopTimeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalVehicleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hillel/service/TransactionalVehicleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Script" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Script" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticket.iml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +66,7 @@
     <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="GitIgnore" />
@@ -132,17 +122,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Starter" />
@@ -184,7 +163,12 @@
       <workItem from="1621503596013" duration="5460000" />
       <workItem from="1621509706340" duration="81000" />
       <workItem from="1621513016063" duration="606000" />
-      <workItem from="1621513689547" duration="3912000" />
+      <workItem from="1621513689547" duration="4691000" />
+      <workItem from="1621579389268" duration="3226000" />
+      <workItem from="1621603296917" duration="6748000" />
+      <workItem from="1621928099830" duration="5847000" />
+      <workItem from="1622184526738" duration="6381000" />
+      <workItem from="1622620559615" duration="3638000" />
     </task>
     <task id="LOCAL-00001" summary="hw2 &#10;Added minIdle,maxPoolSize in HicariCP&#10;defaultTimeout in TransactionManager">
       <created>1616759595168</created>
@@ -242,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618325549168</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="hw 6 &#10;&#10;Added sorting and pagination &#10;&#10;Added new methods&#10;FindAllVehiclesWithMaxFreeSeats&#10;FindAllVehiclesWithMinFreeSeats&#10;&#10;Added Procedure script from hw5 to Script">
+      <created>1621519596319</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1621519596319</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,7 +261,8 @@
     <MESSAGE value="hw3&#10;Minor corrections" />
     <MESSAGE value="hw3&#10;Method AddSeat to JourneyEntity" />
     <MESSAGE value="hw4&#10;Added method - remove" />
-    <option name="LAST_COMMIT_MESSAGE" value="hw4&#10;Added method - remove" />
+    <MESSAGE value="hw 6 &#10;&#10;Added sorting and pagination &#10;&#10;Added new methods&#10;FindAllVehiclesWithMaxFreeSeats&#10;FindAllVehiclesWithMinFreeSeats&#10;&#10;Added Procedure script from hw5 to Script" />
+    <option name="LAST_COMMIT_MESSAGE" value="hw 6 &#10;&#10;Added sorting and pagination &#10;&#10;Added new methods&#10;FindAllVehiclesWithMaxFreeSeats&#10;FindAllVehiclesWithMinFreeSeats&#10;&#10;Added Procedure script from hw5 to Script" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

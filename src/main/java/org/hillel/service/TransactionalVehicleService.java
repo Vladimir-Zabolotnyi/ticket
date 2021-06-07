@@ -1,20 +1,21 @@
 package org.hillel.service;
 
 import org.hillel.persistence.entity.VehicleEntity;
-import org.hillel.persistence.repository.VehicleRepository;
+import org.hillel.persistence.jpa.repository.SimpleVehicleDto;
+import org.hillel.persistence.jpa.repository.VehicleJpaRepository;
+import org.hillel.persistence.jpa.repository.specification.VehicleSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collection;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class TransactionalVehicleService {
 
     @Autowired
-    private VehicleRepository vehicleRepository;
+    private VehicleJpaRepository vehicleRepository;
 
 //    @Autowired
 //    private TransactionTemplate transactionTemplate;
@@ -25,7 +26,7 @@ public class TransactionalVehicleService {
 //    @PersistenceContext
 //    private EntityManagerFactory entityManagerFactory;
 
-   @Transactional()
+    @Transactional()
     public VehicleEntity createOrUpdateVehicle(final VehicleEntity vehicle) {
         if (Objects.isNull(vehicle)) throw new IllegalArgumentException("vehicle is null");
 
@@ -41,7 +42,6 @@ public class TransactionalVehicleService {
 //        }
 
 
-
 //        DefaultTransactionDefinition transactionDefinition = new DefaultTransactionDefinition();
 //        final TransactionStatus transaction = platformTransactionManager.getTransaction(transactionDefinition);
 //        try {vehicleRepository.createOrUpdate(vehicle);
@@ -51,32 +51,54 @@ public class TransactionalVehicleService {
 //        }
 
 
-
 //        return transactionTemplate.execute((status -> vehicleRepository.createOrUpdate(vehicle)));
 
-        return vehicleRepository.createOrUpdate(vehicle);
+        return vehicleRepository.save(vehicle);
     }
 
     @Transactional
     public void remove(VehicleEntity vehicle) {
         if (Objects.isNull(vehicle)) throw new IllegalArgumentException("vehicle is null");
-        vehicleRepository.remove(vehicle);
+        vehicleRepository.delete(vehicle);
     }
 
     @Transactional
     public void removeById(Long vehicleId) {
         if (Objects.isNull(vehicleId)) throw new IllegalArgumentException("vehicleId is null");
-        vehicleRepository.removeById(vehicleId);
+        vehicleRepository.deleteById(vehicleId);
     }
 
-    @Transactional(readOnly = true)
-    public Collection<VehicleEntity> findAllByName(String name){
-        return  vehicleRepository.findByName(name);
+    @Transactional()
+    public void disableById(Long id) {
+        vehicleRepository.disableById(id);
     }
+
+
+    @Transactional(readOnly = true)
+    public Collection<VehicleEntity> findAllByName(String name) {
+
+        VehicleEntity vehicleEntity = new VehicleEntity();
+        vehicleEntity.setName(name);
+        vehicleEntity.setActive(true);
+        vehicleEntity.setId(2L);
+        Example<VehicleEntity> vehicleEntityExample = Example.of(vehicleEntity);
+
+        return vehicleRepository.findAll(VehicleSpecification.byNameAndExample(name, vehicleEntity));
+    }
+
+
+//    @Transactional(readOnly = true)
+//    public Collection<VehicleEntity> findAllByCondition(String name) {
+//        Page<VehicleEntity> byConditions = vehicleRepository.findByConditions(name,
+//                1l,
+//                100l,
+//                PageRequest.of(1, 3, Sort.by(VehicleEntity_.ID)));
+//        return byConditions.getContent();
+//    }
 
     @Transactional(readOnly = true)
     public Collection<VehicleEntity> findByIds(Long... ids) {
-        return vehicleRepository.findByIds(ids);
+        return (Collection<VehicleEntity>) vehicleRepository.findAllById(Arrays.asList(ids));
     }
 
     @Transactional(readOnly = true)
@@ -85,39 +107,43 @@ public class TransactionalVehicleService {
     }
 
     @Transactional(readOnly = true)
-    public  Collection<VehicleEntity> findAll(){
-        return vehicleRepository.findAll();
+    public Collection<VehicleEntity> findAll() {
+        return (Collection<VehicleEntity>) vehicleRepository.findAll();
     }
 
-    @Transactional(readOnly = true)
-    public Collection<VehicleEntity> findAllAsNative(){
-        return vehicleRepository.findAllAsNative();
+    public List<SimpleVehicleDto> findAllSimpleVehicles(String name) {
+            return vehicleRepository.findAllByNameIs( name);
     }
 
-    @Transactional(readOnly = true)
-    public Collection<VehicleEntity> findAllAsNamed(){
-        return vehicleRepository.findAllAsNamed();
-    }
-    @Transactional(readOnly = true)
-    public Collection<VehicleEntity> findAllAsCriteria(){
-        return vehicleRepository.findAllAsCriteria();
-    }
-    @Transactional(readOnly = true)
-    public Collection<VehicleEntity> findAllAsStoredProcedure(){
-        return vehicleRepository.findAllAsStoredProcedure();
-    }
-
-    @Transactional(readOnly = true)
-    public Collection<VehicleEntity> findAllUsingPagingSorting(String orderName,boolean ascOrder,int firstRes,int maxRes){
-        return vehicleRepository.findAllUsingPagingSorting(orderName, ascOrder, firstRes, maxRes);
-    }
-
-    @Transactional(readOnly = true)
-    public Collection<VehicleEntity> findAllVehicleWithMaxFreeSeats(){
-       return vehicleRepository.findAllVehicleWithMaxFreeSeats();
-    }
-    @Transactional(readOnly = true)
-    public Collection<VehicleEntity> findAllVehicleWithMinFreeSeats(){
-        return vehicleRepository.findAllVehicleWithMinFreeSeats();
-    }
+//    @Transactional(readOnly = true)
+//    public Collection<VehicleEntity> findAllAsNative(){
+//        return vehicleRepository.findAllAsNative();
+//    }
+//
+//    @Transactional(readOnly = true)
+//    public Collection<VehicleEntity> findAllAsNamed(){
+//        return vehicleRepository.findAllAsNamed();
+//    }
+//    @Transactional(readOnly = true)
+//    public Collection<VehicleEntity> findAllAsCriteria(){
+//        return vehicleRepository.findAllAsCriteria();
+//    }
+//    @Transactional(readOnly = true)
+//    public Collection<VehicleEntity> findAllAsStoredProcedure(){
+//        return vehicleRepository.findAllAsStoredProcedure();
+//    }
+//
+//    @Transactional(readOnly = true)
+//    public Collection<VehicleEntity> findAllUsingPagingSorting(String orderName,boolean ascOrder,int firstRes,int maxRes){
+//        return vehicleRepository.findAllUsingPagingSorting(orderName, ascOrder, firstRes, maxRes);
+//    }
+//
+//    @Transactional(readOnly = true)
+//    public Collection<VehicleEntity> findAllVehicleWithMaxFreeSeats(){
+//        return vehicleRepository.findAllVehicleWithMaxFreeSeats();
+//    }
+//    @Transactional(readOnly = true)
+//    public Collection<VehicleEntity> findAllVehicleWithMinFreeSeats(){
+//        return vehicleRepository.findAllVehicleWithMinFreeSeats();
+//    }
 }

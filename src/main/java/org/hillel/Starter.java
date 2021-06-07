@@ -3,6 +3,7 @@ package org.hillel;
 import org.hillel.config.RootConfig;
 import org.hillel.persistence.entity.*;
 import org.hillel.persistence.entity.enums.DirectionType;
+import org.hillel.persistence.jpa.repository.SimpleVehicleDto;
 import org.hillel.service.TicketClient;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -21,8 +22,9 @@ public class Starter {
         final ApplicationContext applicationContext = new AnnotationConfigApplicationContext(RootConfig.class);
         final TicketClient ticketClient = applicationContext.getBean(TicketClient.class);
 
-        System.out.println(ticketClient.findAllVehicleWithMaxFreeSeats());
-        System.out.println(ticketClient.findAllVehicleWithMinFreeSeats());
+//        System.out.println(ticketClient.findAllVehicleWithMaxFreeSeats());
+//        System.out.println(ticketClient.findAllVehicleWithMinFreeSeats());
+
 //        System.out.println(ticketClient.findAllSeatsUsingPagingSorting(SeatEntity_.ID,false,0,10));
 //        System.out.println(ticketClient.findJourneyById(1L,true));
 
@@ -32,7 +34,9 @@ public class Starter {
 //        System.out.println( ticketClient.findAllAsNamedStops());
 //        System.out.println( ticketClient.findAllAsCriteriaStopsTime());
 //        System.out.println( ticketClient.findAllAsStoredProcedureJourneys());
-//        System.out.println(ticketClient.findAllVehiclesByName("bus12"));
+        System.out.println(ticketClient.findAllVehiclesByName("bus12"));
+        ticketClient.listAllSimpleVehicle("bus12").forEach(SimpleVehicleDto::toStrings);
+//        ticketClient.disableById(1L);
 
 //
 //        VehicleEntity vehicle1 = buildVehicle("bus1", 1987, "Germany");
