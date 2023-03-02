@@ -1,15 +1,18 @@
 package org.hillel.service;
 
-import org.hillel.persistence.entity.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import java.util.Collection;
 import java.util.Objects;
 import java.util.Optional;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import org.hillel.persistence.entity.JourneyEntity;
+import org.hillel.persistence.entity.SeatEntity;
+import org.hillel.persistence.entity.StopEntity;
+import org.hillel.persistence.entity.StopTimeEntity;
+import org.hillel.persistence.entity.VehicleEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 @Component
 public class TicketClient  /* implements DisposableBean implements InitializingBean */ {
@@ -132,109 +135,135 @@ public class TicketClient  /* implements DisposableBean implements InitializingB
         return vehicleService.findAllByName(name);
     }
 
-    public Collection<StopEntity> findAllStopsByName(String name){
-        return  stopService.findAllByName(name);
+    public Collection<StopEntity> findAllStopsByName(String name) {
+        return stopService.findAllByName(name);
     }
 
 
-
-    public  Collection<VehicleEntity> findVehicleByIds(Long ... ids){
+    public Collection<VehicleEntity> findVehicleByIds(Long... ids) {
         return vehicleService.findByIds(ids);
     }
 
-    public  Optional<VehicleEntity> findVehicleById(Long id){
-        return vehicleService.findById(id,true);
+    public Optional<VehicleEntity> findVehicleById(Long id) {
+        return vehicleService.findById(id, true);
     }
 
-    public Collection<VehicleEntity> findAllVehicles(){
+    public Collection<VehicleEntity> findAllVehicles() {
         return vehicleService.findAll();
     }
 
-    public Collection<JourneyEntity> findAllJourneys(){
+    public Collection<JourneyEntity> findAllJourneys() {
         return journeyService.findAll();
 
-    }public Collection<SeatEntity> findAllSeats(){
+    }
+
+    public Collection<SeatEntity> findAllSeats() {
         return seatService.findAll();
 
-    }public Collection<StopEntity> findAllStops(){
+    }
+
+    public Collection<StopEntity> findAllStops() {
         return stopService.findAll();
 
-    }public Collection<StopTimeEntity> findAllStopsTime(){
+    }
+
+    public Collection<StopTimeEntity> findAllStopsTime() {
         return stopTimeService.findAll();
     }
 
 
-
-
-    public Collection<VehicleEntity> findAllAsNativeVehicles(){
+    public Collection<VehicleEntity> findAllAsNativeVehicles() {
         return vehicleService.findAllAsNative();
     }
-    public Collection<JourneyEntity> findAllAsNativeJourneys(){
+
+    public Collection<JourneyEntity> findAllAsNativeJourneys() {
         return journeyService.findAllAsNative();
 
-    }public Collection<SeatEntity> findAllAsNativeSeats(){
+    }
+
+    public Collection<SeatEntity> findAllAsNativeSeats() {
         return seatService.findAllAsNative();
 
-    }public Collection<StopEntity> findAllAsNativeStops(){
+    }
+
+    public Collection<StopEntity> findAllAsNativeStops() {
         return stopService.findAllAsNative();
 
-    }public Collection<StopTimeEntity> findAllAsNativeStopsTime(){
+    }
+
+    public Collection<StopTimeEntity> findAllAsNativeStopsTime() {
         return stopTimeService.findAllAsNative();
     }
 
 
-
-
-    public Collection<VehicleEntity> findAllAsNamedVehicles(){
+    public Collection<VehicleEntity> findAllAsNamedVehicles() {
         return vehicleService.findAllAsNamed();
     }
-    public Collection<JourneyEntity> findAllAsNamedJourneys(){
+
+    public Collection<JourneyEntity> findAllAsNamedJourneys() {
         return journeyService.findAllAsNamed();
 
-    }public Collection<SeatEntity> findAllAsNamedSeats(){
+    }
+
+    public Collection<SeatEntity> findAllAsNamedSeats() {
         return seatService.findAllAsNamed();
 
-    }public Collection<StopEntity> findAllAsNamedStops(){
+    }
+
+    public Collection<StopEntity> findAllAsNamedStops() {
         return stopService.findAllAsNamed();
 
-    }public Collection<StopTimeEntity> findAllAsNamedStopsTime(){
+    }
+
+    public Collection<StopTimeEntity> findAllAsNamedStopsTime() {
         return stopTimeService.findAllAsNamed();
     }
 
 
-
-
-    public Collection<VehicleEntity> findAllAsCriteriaVehicles(){
+    public Collection<VehicleEntity> findAllAsCriteriaVehicles() {
         return vehicleService.findAllAsCriteria();
     }
-    public Collection<JourneyEntity> findAllAsCriteriaJourneys(){
+
+    public Collection<JourneyEntity> findAllAsCriteriaJourneys() {
         return journeyService.findAllAsCriteria();
 
-    }public Collection<SeatEntity> findAllAsCriteriaSeats(){
+    }
+
+    public Collection<SeatEntity> findAllAsCriteriaSeats() {
         return seatService.findAllAsCriteria();
 
-    }public Collection<StopEntity> findAllAsCriteriaStops(){
+    }
+
+    public Collection<StopEntity> findAllAsCriteriaStops() {
         return stopService.findAllAsCriteria();
 
-    }public Collection<StopTimeEntity> findAllAsCriteriaStopsTime(){
+    }
+
+    public Collection<StopTimeEntity> findAllAsCriteriaStopsTime() {
         return stopTimeService.findAllAsCriteria();
     }
 
 
-
-    public Collection<VehicleEntity> findAllAsStoredProcedureVehicles(){
+    public Collection<VehicleEntity> findAllAsStoredProcedureVehicles() {
         return vehicleService.findAllAsStoredProcedure();
     }
-    public Collection<JourneyEntity> findAllAsStoredProcedureJourneys(){
+
+    public Collection<JourneyEntity> findAllAsStoredProcedureJourneys() {
         return journeyService.findAllAsStoredProcedure();
 
-    }public Collection<SeatEntity> findAllAsStoredProcedureSeats(){
+    }
+
+    public Collection<SeatEntity> findAllAsStoredProcedureSeats() {
         return seatService.findAllAsStoredProcedure();
 
-    }public Collection<StopEntity> findAllAsStoredProcedureStops(){
+    }
+
+    public Collection<StopEntity> findAllAsStoredProcedureStops() {
         return stopService.findAllAsStoredProcedure();
 
-    }public Collection<StopTimeEntity> findAllAsStoredProcedureStopsTime(){
+    }
+
+    public Collection<StopTimeEntity> findAllAsStoredProcedureStopsTime() {
         return stopTimeService.findAllAsStoredProcedure();
     }
 }

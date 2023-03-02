@@ -1,5 +1,21 @@
 package org.hillel.persistence.entity;
 
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.StringJoiner;
+import java.util.stream.Collectors;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,14 +24,6 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
 import org.hillel.persistence.entity.enums.DirectionType;
-
-import javax.persistence.*;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.StringJoiner;
-import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -52,15 +60,15 @@ public class JourneyEntity extends AbstractModifyEntity<Long> {
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinColumn(name = "vehicle_id")
     private VehicleEntity vehicle;
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY, mappedBy = "journey", orphanRemoval = true)
+    private List<StopTimeEntity> stopsTime = new ArrayList<>();
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY, mappedBy = "journey", orphanRemoval = true)
+    private List<SeatEntity> seats = new ArrayList<>();
 
     public void addVehicle(final VehicleEntity vehicle) {
         if (Objects.isNull(vehicle)) throw new IllegalArgumentException("vehicle is null");
         this.vehicle = vehicle;
     }
-
-
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY, mappedBy = "journey", orphanRemoval = true)
-    private List<StopTimeEntity> stopsTime = new ArrayList<>();
 
     public void addStopTime(final StopTimeEntity stopTime) {
         if (Objects.isNull(stopTime)) return;
@@ -70,9 +78,6 @@ public class JourneyEntity extends AbstractModifyEntity<Long> {
         stopsTime.add(stopTime);
         stopTime.setJourney(this);
     }
-
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY, mappedBy = "journey", orphanRemoval = true)
-    private List<SeatEntity> seats = new ArrayList<>();
 
     public void addSeat(final SeatEntity seat) {
         if (Objects.isNull(seat)) return;

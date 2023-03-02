@@ -2,6 +2,9 @@ package org.hillel.config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import java.util.Properties;
+import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
 import org.hibernate.dialect.PostgreSQL10Dialect;
 import org.postgresql.ds.PGSimpleDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +17,6 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
-import javax.persistence.EntityManagerFactory;
-import javax.sql.DataSource;
-import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
 
 @Configuration
@@ -54,7 +52,7 @@ public class DatabaseConfig {
         properties.put("hibernate.dialect", PostgreSQL10Dialect.class.getName());
         properties.put("hibernate.hbm2ddl.auto", "none");
         properties.put("hibernate.show_sql", "true");
-        properties.put("javax.persistence.query.timeout", 1000*60*5);/*TimeUnit.MINUTES.toMillis(5L);IllegalArgumentException*/
+        properties.put("javax.persistence.query.timeout", 1000 * 60 * 5);/*TimeUnit.MINUTES.toMillis(5L);IllegalArgumentException*/
         entityManagerFactory.setJpaProperties(properties);
         return entityManagerFactory;
     }

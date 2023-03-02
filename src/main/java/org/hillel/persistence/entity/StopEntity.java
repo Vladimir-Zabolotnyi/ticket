@@ -1,5 +1,16 @@
 package org.hillel.persistence.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringJoiner;
+import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -7,12 +18,6 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
-
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.StringJoiner;
 
 @Getter
 @Setter
@@ -35,6 +40,8 @@ public class StopEntity extends AbstractModifyEntity<Long> {
 
     @OneToOne(mappedBy = "stop", cascade = {CascadeType.PERSIST}, orphanRemoval = true)
     private StopAdditionalInfoEntity additionalInfo;
+    @OneToMany(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY, mappedBy = "stop", orphanRemoval = true)
+    private List<StopTimeEntity> stopsTime = new ArrayList<>();
 
     public void addStopAdditionalInfo(StopAdditionalInfoEntity stopAdditionalInfo) {
         if (stopAdditionalInfo == null) {
@@ -44,9 +51,6 @@ public class StopEntity extends AbstractModifyEntity<Long> {
         stopAdditionalInfo.setStop(this);
         this.additionalInfo = stopAdditionalInfo;
     }
-
-    @OneToMany(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY, mappedBy = "stop", orphanRemoval = true)
-    private List<StopTimeEntity> stopsTime = new ArrayList<>();
 
     @Override
     public String toString() {

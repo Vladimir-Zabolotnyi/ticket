@@ -7,11 +7,10 @@ import java.util.Map;
 import java.util.Properties;
 
 public final class AppContext {
-    private AppContext() {
-    }
-
     private static Map<String, Object> beanstorage = new HashMap<>();
     private static Properties properties = new Properties();
+    private AppContext() {
+    }
 
     public static void load(final String filename) throws IOException {
         if (filename.isBlank() || filename == null) throw new IllegalArgumentException("filename must be set");

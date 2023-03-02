@@ -1,16 +1,21 @@
 package org.hillel;
 
+import java.io.IOException;
+import java.time.Instant;
+import java.util.Objects;
 import org.hillel.config.RootConfig;
-import org.hillel.persistence.entity.*;
+import org.hillel.persistence.entity.CommonInfo;
+import org.hillel.persistence.entity.JourneyEntity;
+import org.hillel.persistence.entity.SeatEntity;
+import org.hillel.persistence.entity.StopAdditionalInfoEntity;
+import org.hillel.persistence.entity.StopEntity;
+import org.hillel.persistence.entity.StopTimeEntity;
+import org.hillel.persistence.entity.VehicleEntity;
 import org.hillel.persistence.entity.enums.DirectionType;
 import org.hillel.service.TicketClient;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.util.StringUtils;
-
-import java.io.IOException;
-import java.time.Instant;
-import java.util.Objects;
 
 
 public class Starter {

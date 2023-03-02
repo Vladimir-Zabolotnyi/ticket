@@ -1,15 +1,13 @@
 package org.hillel.service;
 
+import java.util.Collection;
+import java.util.Objects;
+import java.util.Optional;
 import org.hillel.persistence.entity.VehicleEntity;
 import org.hillel.persistence.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Collection;
-import java.util.Objects;
-import java.util.Optional;
 
 @Service
 public class TransactionalVehicleService {
@@ -37,8 +35,8 @@ public class TransactionalVehicleService {
     }
 
     @Transactional(readOnly = true)
-    public Collection<VehicleEntity> findAllByName(String name){
-        return  vehicleRepository.findAllByName(name);
+    public Collection<VehicleEntity> findAllByName(String name) {
+        return vehicleRepository.findAllByName(name);
     }
 
     @Transactional(readOnly = true)
@@ -52,25 +50,27 @@ public class TransactionalVehicleService {
     }
 
     @Transactional(readOnly = true)
-    public  Collection<VehicleEntity> findAll(){
+    public Collection<VehicleEntity> findAll() {
         return vehicleRepository.findAll();
     }
 
     @Transactional(readOnly = true)
-    public Collection<VehicleEntity> findAllAsNative(){
+    public Collection<VehicleEntity> findAllAsNative() {
         return vehicleRepository.findAllAsNative();
     }
 
     @Transactional(readOnly = true)
-    public Collection<VehicleEntity> findAllAsNamed(){
+    public Collection<VehicleEntity> findAllAsNamed() {
         return vehicleRepository.findAllAsNamed();
     }
+
     @Transactional(readOnly = true)
-    public Collection<VehicleEntity> findAllAsCriteria(){
+    public Collection<VehicleEntity> findAllAsCriteria() {
         return vehicleRepository.findAllAsCriteria();
     }
+
     @Transactional(readOnly = true)
-    public Collection<VehicleEntity> findAllAsStoredProcedure(){
+    public Collection<VehicleEntity> findAllAsStoredProcedure() {
         return vehicleRepository.findAllAsStoredProcedure();
     }
 }

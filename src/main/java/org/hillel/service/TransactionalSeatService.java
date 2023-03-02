@@ -1,17 +1,12 @@
 package org.hillel.service;
 
-import org.hillel.persistence.entity.JourneyEntity;
+import java.util.Collection;
+import java.util.Objects;
 import org.hillel.persistence.entity.SeatEntity;
-import org.hillel.persistence.entity.StopEntity;
-import org.hillel.persistence.entity.VehicleEntity;
 import org.hillel.persistence.repository.SeatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Collection;
-import java.util.Objects;
 
 @Service
 public class TransactionalSeatService {
@@ -37,25 +32,29 @@ public class TransactionalSeatService {
         if (Objects.isNull(seatId)) throw new IllegalArgumentException("seatId is null");
         seatRepository.removeById(seatId);
     }
+
     @Transactional(readOnly = true)
-    public Collection<SeatEntity> findAll(){
+    public Collection<SeatEntity> findAll() {
         return seatRepository.findAll();
     }
+
     @Transactional(readOnly = true)
-    public Collection<SeatEntity> findAllAsNative(){
+    public Collection<SeatEntity> findAllAsNative() {
         return seatRepository.findAllAsNative();
     }
 
     @Transactional(readOnly = true)
-    public Collection<SeatEntity> findAllAsNamed(){
+    public Collection<SeatEntity> findAllAsNamed() {
         return seatRepository.findAllAsNamed();
     }
+
     @Transactional(readOnly = true)
-    public Collection<SeatEntity> findAllAsCriteria(){
+    public Collection<SeatEntity> findAllAsCriteria() {
         return seatRepository.findAllAsCriteria();
     }
+
     @Transactional(readOnly = true)
-    public Collection<SeatEntity> findAllAsStoredProcedure(){
+    public Collection<SeatEntity> findAllAsStoredProcedure() {
         return seatRepository.findAllAsStoredProcedure();
     }
 }

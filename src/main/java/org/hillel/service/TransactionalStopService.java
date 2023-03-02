@@ -1,13 +1,12 @@
 package org.hillel.service;
 
+import java.util.Collection;
+import java.util.Objects;
 import org.hillel.persistence.entity.StopEntity;
 import org.hillel.persistence.repository.StopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Collection;
-import java.util.Objects;
 
 @Service
 public class TransactionalStopService {
@@ -33,29 +32,32 @@ public class TransactionalStopService {
     }
 
     @Transactional(readOnly = true)
-    public Collection<StopEntity> findAllByName(String name){
-        return  stopRepository.findAllByName(name);
+    public Collection<StopEntity> findAllByName(String name) {
+        return stopRepository.findAllByName(name);
     }
 
     @Transactional(readOnly = true)
-    public  Collection<StopEntity> findAll(){
+    public Collection<StopEntity> findAll() {
         return stopRepository.findAll();
     }
+
     @Transactional(readOnly = true)
-    public Collection<StopEntity> findAllAsNative(){
+    public Collection<StopEntity> findAllAsNative() {
         return stopRepository.findAllAsNative();
     }
 
     @Transactional(readOnly = true)
-    public Collection<StopEntity> findAllAsNamed(){
+    public Collection<StopEntity> findAllAsNamed() {
         return stopRepository.findAllAsNamed();
     }
+
     @Transactional(readOnly = true)
-    public Collection<StopEntity> findAllAsCriteria(){
+    public Collection<StopEntity> findAllAsCriteria() {
         return stopRepository.findAllAsCriteria();
     }
+
     @Transactional(readOnly = true)
-    public Collection<StopEntity> findAllAsStoredProcedure(){
+    public Collection<StopEntity> findAllAsStoredProcedure() {
         return stopRepository.findAllAsStoredProcedure();
     }
 }

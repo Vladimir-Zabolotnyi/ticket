@@ -1,11 +1,10 @@
 package org.hillel.persistence.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-
+import java.util.StringJoiner;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import java.util.StringJoiner;
+import lombok.Getter;
+import lombok.Setter;
 
 @Embeddable
 @Getter

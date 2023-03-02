@@ -1,17 +1,12 @@
 package org.hillel.service;
 
-import org.hillel.persistence.entity.JourneyEntity;
-import org.hillel.persistence.entity.StopEntity;
+import java.util.Collection;
+import java.util.Objects;
 import org.hillel.persistence.entity.StopTimeEntity;
-import org.hillel.persistence.entity.VehicleEntity;
 import org.hillel.persistence.repository.StopTimeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Collection;
-import java.util.Objects;
 
 @Service
 public class TransactionalStopTimeService {
@@ -37,25 +32,29 @@ public class TransactionalStopTimeService {
         if (Objects.isNull(stopTimeId)) throw new IllegalArgumentException("stopTimeId is null");
         stopTimeRepository.removeById(stopTimeId);
     }
+
     @Transactional(readOnly = true)
-    public Collection<StopTimeEntity> findAll(){
+    public Collection<StopTimeEntity> findAll() {
         return stopTimeRepository.findAll();
     }
+
     @Transactional(readOnly = true)
-    public Collection<StopTimeEntity> findAllAsNative(){
+    public Collection<StopTimeEntity> findAllAsNative() {
         return stopTimeRepository.findAllAsNative();
     }
 
     @Transactional(readOnly = true)
-    public Collection<StopTimeEntity> findAllAsNamed(){
+    public Collection<StopTimeEntity> findAllAsNamed() {
         return stopTimeRepository.findAllAsNamed();
     }
+
     @Transactional(readOnly = true)
-    public Collection<StopTimeEntity> findAllAsCriteria(){
+    public Collection<StopTimeEntity> findAllAsCriteria() {
         return stopTimeRepository.findAllAsCriteria();
     }
+
     @Transactional(readOnly = true)
-    public Collection<StopTimeEntity> findAllAsStoredProcedure(){
+    public Collection<StopTimeEntity> findAllAsStoredProcedure() {
         return stopTimeRepository.findAllAsStoredProcedure();
     }
 }
